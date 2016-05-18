@@ -2,9 +2,11 @@
 .classpath
 .project
 .settings/
+bin/
 
-# maven
-target/
+# gradle
+build/
+.gradle/
 
 # project
 logs/
