@@ -21,8 +21,14 @@ public class EthereumClientTest {
 
 	@Test
 	public void test_eth_gasPrice() throws Throwable {
-		String price = client.eth_gasPrice();
-		assertThat(price, startsWith("0x"));
+		String rsp = client.eth_gasPrice();
+		assertThat(rsp, startsWith("0x"));
+	}
+
+	@Test
+	public void test_eth_coinbase() throws Throwable {
+		String rsp = client.eth_coinbase();
+		assertThat(rsp, startsWith("0x"));
 	}
 
 }

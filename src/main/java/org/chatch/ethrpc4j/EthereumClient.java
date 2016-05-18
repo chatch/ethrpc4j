@@ -26,652 +26,549 @@ public class EthereumClient implements JsonRpc {
 		client = new JsonRpcHttpClient(new URL(serverURL));
 	}
 
+	protected String call(String method, Object[] params) {
+		String rsp = null;
+		try {
+			rsp = client.invoke(method, params, String.class);
+		} catch (Throwable e) {
+			LOG.error(method + " failed", e);
+		}
+		return rsp;
+	}
+
 	@Override
 	public String eth_gasPrice() {
-		String price = null;
-		try {
-			price = client.invoke("eth_gasPrice", new Object[] {}, String.class);
-		} catch (Throwable e) {
-			LOG.error("eth_gasPrice failed", e);
-		}
-		return price;
+		return call("eth_gasPrice", new Object[] {});
 	}
 
 	@Override
 	public String web3_clientVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("web3_clientVersion", new Object[] {});
 	}
 
 	@Override
 	public String web3_sha3(String data) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("web3_sha3", new Object[] {});
 	}
 
 	@Override
 	public String net_version() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("net_version", new Object[] {});
 	}
 
 	@Override
 	public String net_peerCount() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("net_peerCount", new Object[] {});
 	}
 
 	@Override
 	public boolean net_listening() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("net_listening", new Object[] {});
 	}
 
 	@Override
 	public String eth_protocolVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_protocolVersion", new Object[] {});
 	}
 
 	@Override
 	public SyncingResult eth_syncing() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_syncing", new Object[] {});
 	}
 
 	@Override
 	public String eth_coinbase() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return call("eth_coinbase", new Object[] {});
 
 	@Override
 	public boolean eth_mining() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("eth_mining", new Object[] {});
 	}
 
 	@Override
 	public String eth_hashrate() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_hashrate", new Object[] {});
 	}
 
 	@Override
 	public String[] eth_accounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_accounts", new Object[] {});
 	}
 
 	@Override
 	public String eth_blockNumber() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_blockNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBalance(String address, String block) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBalance", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBalance(String address) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBalance", new Object[] {});
 	}
 
 	@Override
 	public String eth_getStorageAt(String address, String storageIdx, String blockId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getStorageAt", new Object[] {});
 	}
 
 	@Override
 	public String eth_getTransactionCount(String address, String blockId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getTransactionCount", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByHash(String blockHash) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBlockTransactionCountByHash", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByNumber(String bnOrId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBlockTransactionCountByNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockHash(String blockHash) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getUncleCountByBlockHash", new Object[] {});
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockNumber(String bnOrId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getUncleCountByBlockNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getCode(String addr, String bnOrId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getCode", new Object[] {});
 	}
 
 	@Override
 	public String eth_sign(String addr, String data) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_sign", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendTransaction(CallArguments transactionArgs) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_sendTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendTransaction(String from, String to, String gas, String gasPrice, String value, String data,
 			String nonce) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_sendTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendRawTransaction(String rawData) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_sendRawTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_call(CallArguments args, String bnOrId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_call", new Object[] {});
 	}
 
 	@Override
 	public String eth_estimateGas(CallArguments args) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_estimateGas", new Object[] {});
 	}
 
 	@Override
 	public BlockResult eth_getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBlockByHash", new Object[] {});
 	}
 
 	@Override
 	public BlockResult eth_getBlockByNumber(String bnOrId, Boolean fullTransactionObjects) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getBlockByNumber", new Object[] {});
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByHash(String transactionHash) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getTransactionByHash", new Object[] {});
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockHashAndIndex(String blockHash, String index) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getTransactionByBlockHashAndIndex", new Object[] {});
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockNumberAndIndex(String bnOrId, String index) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getTransactionByBlockNumberAndIndex", new Object[] {});
 	}
 
 	@Override
 	public TransactionReceiptDTO eth_getTransactionReceipt(String transactionHash) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getTransactionReceipt", new Object[] {});
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockHashAndIndex(String blockHash, String uncleIdx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getUncleByBlockHashAndIndex", new Object[] {});
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockNumberAndIndex(String blockId, String uncleIdx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getUncleByBlockNumberAndIndex", new Object[] {});
 	}
 
 	@Override
 	public String[] eth_getCompilers() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getCompilers", new Object[] {});
 	}
 
 	@Override
 	public CompilationResult eth_compileLLL(String contract) {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_compileLLL", new Object[] {});
 	}
 
 	@Override
 	public CompilationResult eth_compileSolidity(String contract) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_compileSolidity", new Object[] {});
 	}
 
 	@Override
 	public CompilationResult eth_compileSerpent(String contract) {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_compileSerpent", new Object[] {});
 	}
 
 	@Override
 	public String eth_resend() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_resend", new Object[] {});
 	}
 
 	@Override
 	public String eth_pendingTransactions() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_pendingTransactions", new Object[] {});
 	}
 
 	@Override
 	public String eth_newFilter(FilterRequest fr) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_newFilter", new Object[] {});
 	}
 
 	@Override
 	public String eth_newBlockFilter() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_newBlockFilter", new Object[] {});
 	}
 
 	@Override
 	public String eth_newPendingTransactionFilter() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_newPendingTransactionFilter", new Object[] {});
 	}
 
 	@Override
 	public boolean eth_uninstallFilter(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return call("eth_uninstallFilter", new Object[] {});
 	}
 
 	@Override
 	public Object[] eth_getFilterChanges(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getFilterChanges", new Object[] {});
 	}
 
 	@Override
 	public Object[] eth_getFilterLogs(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getFilterLogs", new Object[] {});
 	}
 
 	@Override
 	public Object[] eth_getLogs(FilterRequest fr) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getLogs", new Object[] {});
 	}
 
 	@Override
 	public String eth_getWork() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_getWork", new Object[] {});
 	}
 
 	@Override
 	public String eth_submitWork() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_submitWork", new Object[] {});
 	}
 
 	@Override
 	public String eth_submitHashrate() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("eth_submitHashrate", new Object[] {});
 	}
 
 	@Override
 	public String db_putString() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("db_putString", new Object[] {});
 	}
 
 	@Override
 	public String db_getString() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("db_getString", new Object[] {});
 	}
 
 	@Override
 	public String db_putHex() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("db_putHex", new Object[] {});
 	}
 
 	@Override
 	public String db_getHex() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("db_getHex", new Object[] {});
 	}
 
 	@Override
 	public String shh_post() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_post", new Object[] {});
 	}
 
 	@Override
 	public String shh_version() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_version", new Object[] {});
 	}
 
 	@Override
 	public String shh_newIdentity() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_newIdentity", new Object[] {});
 	}
 
 	@Override
 	public String shh_hasIdentity() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_hasIdentity", new Object[] {});
 	}
 
 	@Override
 	public String shh_newGroup() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_newGroup", new Object[] {});
 	}
 
 	@Override
 	public String shh_addToGroup() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_addToGroup", new Object[] {});
 	}
 
 	@Override
 	public String shh_newFilter() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_newFilter", new Object[] {});
 	}
 
 	@Override
 	public String shh_uninstallFilter() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_uninstallFilter", new Object[] {});
 	}
 
 	@Override
 	public String shh_getFilterChanges() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_getFilterChanges", new Object[] {});
 	}
 
 	@Override
 	public String shh_getMessages() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("shh_getMessages", new Object[] {});
 	}
 
 	@Override
 	public boolean admin_addPeer(String s) {
-		// TODO Auto-generated method stub
-		return false;
+		return call("admin_addPeer", new Object[] {});
 	}
 
 	@Override
 	public String admin_exportChain() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_exportChain", new Object[] {});
 	}
 
 	@Override
 	public String admin_importChain() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_importChain", new Object[] {});
 	}
 
 	@Override
 	public String admin_sleepBlocks() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_sleepBlocks", new Object[] {});
 	}
 
 	@Override
 	public String admin_verbosity() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_verbosity", new Object[] {});
 	}
 
 	@Override
 	public String admin_setSolc() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_setSolc", new Object[] {});
 	}
 
 	@Override
 	public String admin_startRPC() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_startRPC", new Object[] {});
 	}
 
 	@Override
 	public String admin_stopRPC() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_stopRPC", new Object[] {});
 	}
 
 	@Override
 	public String admin_setGlobalRegistrar() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_setGlobalRegistrar", new Object[] {});
 	}
 
 	@Override
 	public String admin_setHashReg() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_setHashReg", new Object[] {});
 	}
 
 	@Override
 	public String admin_setUrlHint() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_setUrlHint", new Object[] {});
 	}
 
 	@Override
 	public String admin_saveInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_saveInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_register() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_register", new Object[] {});
 	}
 
 	@Override
 	public String admin_registerUrl() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_registerUrl", new Object[] {});
 	}
 
 	@Override
 	public String admin_startNatSpec() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_startNatSpec", new Object[] {});
 	}
 
 	@Override
 	public String admin_stopNatSpec() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_stopNatSpec", new Object[] {});
 	}
 
 	@Override
 	public String admin_getContractInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_getContractInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_httpGet() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_httpGet", new Object[] {});
 	}
 
 	@Override
 	public String admin_nodeInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_nodeInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_peers() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_peers", new Object[] {});
 	}
 
 	@Override
 	public String admin_datadir() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("admin_datadir", new Object[] {});
 	}
 
 	@Override
 	public String net_addPeer() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("net_addPeer", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_start() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_start", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_stop() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_stop", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setEtherbase(String coinBase) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_setEtherbase", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setExtra(String data) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_setExtra", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setGasPrice(String newMinGasPrice) {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_setGasPrice", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_startAutoDAG() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_startAutoDAG", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_stopAutoDAG() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_stopAutoDAG", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_makeDAG() {
-		// TODO Auto-generated method stub
-		return false;
+		return call("miner_makeDAG", new Object[] {});
 	}
 
 	@Override
 	public String miner_hashrate() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("miner_hashrate", new Object[] {});
 	}
 
 	@Override
 	public String debug_printBlock() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_printBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_getBlockRlp() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_getBlockRlp", new Object[] {});
 	}
 
 	@Override
 	public String debug_setHead() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_setHead", new Object[] {});
 	}
 
 	@Override
 	public String debug_processBlock() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_processBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_seedHash() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_seedHash", new Object[] {});
 	}
 
 	@Override
 	public String debug_dumpBlock() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_dumpBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_metrics() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("debug_metrics", new Object[] {});
 	}
 
 	@Override
 	public String personal_newAccount(String seed) {
-		// TODO Auto-generated method stub
-		return null;
+		return call("personal_newAccount", new Object[] {});
 	}
 
 	@Override
 	public boolean personal_unlockAccount(String addr, String pass, String duration) {
-		// TODO Auto-generated method stub
-		return false;
+		return call("personal_unlockAccount", new Object[] {});
 	}
 
 	@Override
 	public String[] personal_listAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return call("personal_listAccounts", new Object[] {});
 	}
 
 }
