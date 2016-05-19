@@ -14,16 +14,27 @@ import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 /**
  * Ethereum JSON RPC Client.
  * 
- * see api docs at https://github.com/ethereum/wiki/wiki/JSON-RPC
+ * @see <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC">api docs
+ *      here</a>.
  */
 public class EthereumClient implements JsonRpc {
 
 	private static final Logger LOG = LoggerFactory.getLogger(EthereumClient.class);
 
-	JsonRpcHttpClient client;
+	private static final String DEFAULT_PATH = "http://localhost:8545";
+
+	private JsonRpcHttpClient client;
+
+	public EthereumClient() throws MalformedURLException {
+		this(DEFAULT_PATH);
+	}
 
 	public EthereumClient(String serverURL) throws MalformedURLException {
-		client = new JsonRpcHttpClient(new URL(serverURL));
+		this.client = new JsonRpcHttpClient(new URL(serverURL));
+	}
+
+	public EthereumClient(JsonRpcHttpClient jsonRpcClient) throws MalformedURLException {
+		this.client = jsonRpcClient;
 	}
 
 	@Override
