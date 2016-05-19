@@ -26,549 +26,562 @@ public class EthereumClient implements JsonRpc {
 		client = new JsonRpcHttpClient(new URL(serverURL));
 	}
 
-	protected String call(String method, Object[] params) {
-		String rsp = null;
-		try {
-			rsp = client.invoke(method, params, String.class);
-		} catch (Throwable e) {
-			LOG.error(method + " failed", e);
-		}
-		return rsp;
-	}
-
 	@Override
 	public String eth_gasPrice() {
-		return call("eth_gasPrice", new Object[] {});
+		return call_String("eth_gasPrice", new Object[] {});
 	}
 
 	@Override
 	public String web3_clientVersion() {
-		return call("web3_clientVersion", new Object[] {});
+		return call_String("web3_clientVersion", new Object[] {});
 	}
 
 	@Override
 	public String web3_sha3(String data) throws Exception {
-		return call("web3_sha3", new Object[] {});
+		return call_String("web3_sha3", new Object[] {});
 	}
 
 	@Override
 	public String net_version() {
-		return call("net_version", new Object[] {});
+		return call_String("net_version", new Object[] {});
 	}
 
 	@Override
 	public String net_peerCount() {
-		return call("net_peerCount", new Object[] {});
+		return call_String("net_peerCount", new Object[] {});
 	}
 
 	@Override
 	public boolean net_listening() {
-		return call("net_listening", new Object[] {});
+		return call_Boolean("net_listening", new Object[] {});
 	}
 
 	@Override
 	public String eth_protocolVersion() {
-		return call("eth_protocolVersion", new Object[] {});
+		return call_String("eth_protocolVersion", new Object[] {});
 	}
 
 	@Override
 	public SyncingResult eth_syncing() {
-		return call("eth_syncing", new Object[] {});
+		return (SyncingResult) call("eth_syncing", new Object[] {}, SyncingResult.class);
 	}
 
 	@Override
 	public String eth_coinbase() {
-		return call("eth_coinbase", new Object[] {});
+		return call_String("eth_coinbase", new Object[] {});
+	}
 
 	@Override
 	public boolean eth_mining() {
-		return call("eth_mining", new Object[] {});
+		return call_Boolean("eth_mining", new Object[] {});
 	}
 
 	@Override
 	public String eth_hashrate() {
-		return call("eth_hashrate", new Object[] {});
+		return call_String("eth_hashrate", new Object[] {});
 	}
 
 	@Override
 	public String[] eth_accounts() {
-		return call("eth_accounts", new Object[] {});
+		return (String[]) call("eth_accounts", new Object[] {}, String[].class);
 	}
 
 	@Override
 	public String eth_blockNumber() {
-		return call("eth_blockNumber", new Object[] {});
+		return call_String("eth_blockNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBalance(String address, String block) throws Exception {
-		return call("eth_getBalance", new Object[] {});
+		return call_String("eth_getBalance", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBalance(String address) throws Exception {
-		return call("eth_getBalance", new Object[] {});
+		return call_String("eth_getBalance", new Object[] {});
 	}
 
 	@Override
 	public String eth_getStorageAt(String address, String storageIdx, String blockId) throws Exception {
-		return call("eth_getStorageAt", new Object[] {});
+		return call_String("eth_getStorageAt", new Object[] {});
 	}
 
 	@Override
 	public String eth_getTransactionCount(String address, String blockId) throws Exception {
-		return call("eth_getTransactionCount", new Object[] {});
+		return call_String("eth_getTransactionCount", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByHash(String blockHash) throws Exception {
-		return call("eth_getBlockTransactionCountByHash", new Object[] {});
+		return call_String("eth_getBlockTransactionCountByHash", new Object[] {});
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByNumber(String bnOrId) throws Exception {
-		return call("eth_getBlockTransactionCountByNumber", new Object[] {});
+		return call_String("eth_getBlockTransactionCountByNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockHash(String blockHash) throws Exception {
-		return call("eth_getUncleCountByBlockHash", new Object[] {});
+		return call_String("eth_getUncleCountByBlockHash", new Object[] {});
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockNumber(String bnOrId) throws Exception {
-		return call("eth_getUncleCountByBlockNumber", new Object[] {});
+		return call_String("eth_getUncleCountByBlockNumber", new Object[] {});
 	}
 
 	@Override
 	public String eth_getCode(String addr, String bnOrId) throws Exception {
-		return call("eth_getCode", new Object[] {});
+		return call_String("eth_getCode", new Object[] {});
 	}
 
 	@Override
 	public String eth_sign(String addr, String data) throws Exception {
-		return call("eth_sign", new Object[] {});
+		return call_String("eth_sign", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendTransaction(CallArguments transactionArgs) throws Exception {
-		return call("eth_sendTransaction", new Object[] {});
+		return call_String("eth_sendTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendTransaction(String from, String to, String gas, String gasPrice, String value, String data,
 			String nonce) throws Exception {
-		return call("eth_sendTransaction", new Object[] {});
+		return call_String("eth_sendTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_sendRawTransaction(String rawData) throws Exception {
-		return call("eth_sendRawTransaction", new Object[] {});
+		return call_String("eth_sendRawTransaction", new Object[] {});
 	}
 
 	@Override
 	public String eth_call(CallArguments args, String bnOrId) throws Exception {
-		return call("eth_call", new Object[] {});
+		return call_String("eth_call", new Object[] {});
 	}
 
 	@Override
 	public String eth_estimateGas(CallArguments args) throws Exception {
-		return call("eth_estimateGas", new Object[] {});
+		return call_String("eth_estimateGas", new Object[] {});
 	}
 
 	@Override
 	public BlockResult eth_getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
-		return call("eth_getBlockByHash", new Object[] {});
+		return (BlockResult) call("eth_getBlockByHash", new Object[] {}, BlockResult.class);
 	}
 
 	@Override
 	public BlockResult eth_getBlockByNumber(String bnOrId, Boolean fullTransactionObjects) throws Exception {
-		return call("eth_getBlockByNumber", new Object[] {});
+		return (BlockResult) call("eth_getBlockByNumber", new Object[] {}, BlockResult.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByHash(String transactionHash) throws Exception {
-		return call("eth_getTransactionByHash", new Object[] {});
+		return (TransactionResultDTO) call("eth_getTransactionByHash", new Object[] {}, TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockHashAndIndex(String blockHash, String index) throws Exception {
-		return call("eth_getTransactionByBlockHashAndIndex", new Object[] {});
+		return (TransactionResultDTO) call("eth_getTransactionByBlockHashAndIndex", new Object[] {},
+				TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockNumberAndIndex(String bnOrId, String index) throws Exception {
-		return call("eth_getTransactionByBlockNumberAndIndex", new Object[] {});
+		return (TransactionResultDTO) call("eth_getTransactionByBlockNumberAndIndex", new Object[] {},
+				TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionReceiptDTO eth_getTransactionReceipt(String transactionHash) throws Exception {
-		return call("eth_getTransactionReceipt", new Object[] {});
+		return (TransactionReceiptDTO) call("eth_getTransactionReceipt", new Object[] {}, TransactionReceiptDTO.class);
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockHashAndIndex(String blockHash, String uncleIdx) throws Exception {
-		return call("eth_getUncleByBlockHashAndIndex", new Object[] {});
+		return (BlockResult) call("eth_getUncleByBlockHashAndIndex", new Object[] {}, BlockResult.class);
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockNumberAndIndex(String blockId, String uncleIdx) throws Exception {
-		return call("eth_getUncleByBlockNumberAndIndex", new Object[] {});
+		return (BlockResult) call("eth_getUncleByBlockNumberAndIndex", new Object[] {}, BlockResult.class);
 	}
 
 	@Override
 	public String[] eth_getCompilers() {
-		return call("eth_getCompilers", new Object[] {});
+		return (String[]) call("eth_getCompilers", new Object[] {}, String[].class);
 	}
 
 	@Override
 	public CompilationResult eth_compileLLL(String contract) {
-		return call("eth_compileLLL", new Object[] {});
+		return (CompilationResult) call("eth_compileLLL", new Object[] {}, CompilationResult.class);
 	}
 
 	@Override
 	public CompilationResult eth_compileSolidity(String contract) throws Exception {
-		return call("eth_compileSolidity", new Object[] {});
+		return (CompilationResult) call("eth_compileSolidity", new Object[] {}, CompilationResult.class);
 	}
 
 	@Override
 	public CompilationResult eth_compileSerpent(String contract) {
-		return call("eth_compileSerpent", new Object[] {});
+		return (CompilationResult) call("eth_compileSerpent", new Object[] {}, CompilationResult.class);
 	}
 
 	@Override
 	public String eth_resend() {
-		return call("eth_resend", new Object[] {});
+		return call_String("eth_resend", new Object[] {});
 	}
 
 	@Override
 	public String eth_pendingTransactions() {
-		return call("eth_pendingTransactions", new Object[] {});
+		return call_String("eth_pendingTransactions", new Object[] {});
 	}
 
 	@Override
 	public String eth_newFilter(FilterRequest fr) throws Exception {
-		return call("eth_newFilter", new Object[] {});
+		return call_String("eth_newFilter", new Object[] {});
 	}
 
 	@Override
 	public String eth_newBlockFilter() {
-		return call("eth_newBlockFilter", new Object[] {});
+		return call_String("eth_newBlockFilter", new Object[] {});
 	}
 
 	@Override
 	public String eth_newPendingTransactionFilter() {
-		return call("eth_newPendingTransactionFilter", new Object[] {});
+		return call_String("eth_newPendingTransactionFilter", new Object[] {});
 	}
 
 	@Override
 	public boolean eth_uninstallFilter(String id) {
-		return call("eth_uninstallFilter", new Object[] {});
+		return call_Boolean("eth_uninstallFilter", new Object[] {});
 	}
 
 	@Override
 	public Object[] eth_getFilterChanges(String id) {
-		return call("eth_getFilterChanges", new Object[] {});
+		return (Object[]) call("eth_getFilterChanges", new Object[] {}, Object[].class);
 	}
 
 	@Override
 	public Object[] eth_getFilterLogs(String id) {
-		return call("eth_getFilterLogs", new Object[] {});
+		return (Object[]) call("eth_getFilterLogs", new Object[] {}, Object[].class);
 	}
 
 	@Override
 	public Object[] eth_getLogs(FilterRequest fr) throws Exception {
-		return call("eth_getLogs", new Object[] {});
+		return (Object[]) call("eth_getLogs", new Object[] {}, Object[].class);
 	}
 
 	@Override
 	public String eth_getWork() {
-		return call("eth_getWork", new Object[] {});
+		return call_String("eth_getWork", new Object[] {});
 	}
 
 	@Override
 	public String eth_submitWork() {
-		return call("eth_submitWork", new Object[] {});
+		return call_String("eth_submitWork", new Object[] {});
 	}
 
 	@Override
 	public String eth_submitHashrate() {
-		return call("eth_submitHashrate", new Object[] {});
+		return call_String("eth_submitHashrate", new Object[] {});
 	}
 
 	@Override
 	public String db_putString() {
-		return call("db_putString", new Object[] {});
+		return call_String("db_putString", new Object[] {});
 	}
 
 	@Override
 	public String db_getString() {
-		return call("db_getString", new Object[] {});
+		return call_String("db_getString", new Object[] {});
 	}
 
 	@Override
 	public String db_putHex() {
-		return call("db_putHex", new Object[] {});
+		return call_String("db_putHex", new Object[] {});
 	}
 
 	@Override
 	public String db_getHex() {
-		return call("db_getHex", new Object[] {});
+		return call_String("db_getHex", new Object[] {});
 	}
 
 	@Override
 	public String shh_post() {
-		return call("shh_post", new Object[] {});
+		return call_String("shh_post", new Object[] {});
 	}
 
 	@Override
 	public String shh_version() {
-		return call("shh_version", new Object[] {});
+		return call_String("shh_version", new Object[] {});
 	}
 
 	@Override
 	public String shh_newIdentity() {
-		return call("shh_newIdentity", new Object[] {});
+		return call_String("shh_newIdentity", new Object[] {});
 	}
 
 	@Override
 	public String shh_hasIdentity() {
-		return call("shh_hasIdentity", new Object[] {});
+		return call_String("shh_hasIdentity", new Object[] {});
 	}
 
 	@Override
 	public String shh_newGroup() {
-		return call("shh_newGroup", new Object[] {});
+		return call_String("shh_newGroup", new Object[] {});
 	}
 
 	@Override
 	public String shh_addToGroup() {
-		return call("shh_addToGroup", new Object[] {});
+		return call_String("shh_addToGroup", new Object[] {});
 	}
 
 	@Override
 	public String shh_newFilter() {
-		return call("shh_newFilter", new Object[] {});
+		return call_String("shh_newFilter", new Object[] {});
 	}
 
 	@Override
 	public String shh_uninstallFilter() {
-		return call("shh_uninstallFilter", new Object[] {});
+		return call_String("shh_uninstallFilter", new Object[] {});
 	}
 
 	@Override
 	public String shh_getFilterChanges() {
-		return call("shh_getFilterChanges", new Object[] {});
+		return call_String("shh_getFilterChanges", new Object[] {});
 	}
 
 	@Override
 	public String shh_getMessages() {
-		return call("shh_getMessages", new Object[] {});
+		return call_String("shh_getMessages", new Object[] {});
 	}
 
 	@Override
 	public boolean admin_addPeer(String s) {
-		return call("admin_addPeer", new Object[] {});
+		return call_Boolean("admin_addPeer", new Object[] {});
 	}
 
 	@Override
 	public String admin_exportChain() {
-		return call("admin_exportChain", new Object[] {});
+		return call_String("admin_exportChain", new Object[] {});
 	}
 
 	@Override
 	public String admin_importChain() {
-		return call("admin_importChain", new Object[] {});
+		return call_String("admin_importChain", new Object[] {});
 	}
 
 	@Override
 	public String admin_sleepBlocks() {
-		return call("admin_sleepBlocks", new Object[] {});
+		return call_String("admin_sleepBlocks", new Object[] {});
 	}
 
 	@Override
 	public String admin_verbosity() {
-		return call("admin_verbosity", new Object[] {});
+		return call_String("admin_verbosity", new Object[] {});
 	}
 
 	@Override
 	public String admin_setSolc() {
-		return call("admin_setSolc", new Object[] {});
+		return call_String("admin_setSolc", new Object[] {});
 	}
 
 	@Override
 	public String admin_startRPC() {
-		return call("admin_startRPC", new Object[] {});
+		return call_String("admin_startRPC", new Object[] {});
 	}
 
 	@Override
 	public String admin_stopRPC() {
-		return call("admin_stopRPC", new Object[] {});
+		return call_String("admin_stopRPC", new Object[] {});
 	}
 
 	@Override
 	public String admin_setGlobalRegistrar() {
-		return call("admin_setGlobalRegistrar", new Object[] {});
+		return call_String("admin_setGlobalRegistrar", new Object[] {});
 	}
 
 	@Override
 	public String admin_setHashReg() {
-		return call("admin_setHashReg", new Object[] {});
+		return call_String("admin_setHashReg", new Object[] {});
 	}
 
 	@Override
 	public String admin_setUrlHint() {
-		return call("admin_setUrlHint", new Object[] {});
+		return call_String("admin_setUrlHint", new Object[] {});
 	}
 
 	@Override
 	public String admin_saveInfo() {
-		return call("admin_saveInfo", new Object[] {});
+		return call_String("admin_saveInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_register() {
-		return call("admin_register", new Object[] {});
+		return call_String("admin_register", new Object[] {});
 	}
 
 	@Override
 	public String admin_registerUrl() {
-		return call("admin_registerUrl", new Object[] {});
+		return call_String("admin_registerUrl", new Object[] {});
 	}
 
 	@Override
 	public String admin_startNatSpec() {
-		return call("admin_startNatSpec", new Object[] {});
+		return call_String("admin_startNatSpec", new Object[] {});
 	}
 
 	@Override
 	public String admin_stopNatSpec() {
-		return call("admin_stopNatSpec", new Object[] {});
+		return call_String("admin_stopNatSpec", new Object[] {});
 	}
 
 	@Override
 	public String admin_getContractInfo() {
-		return call("admin_getContractInfo", new Object[] {});
+		return call_String("admin_getContractInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_httpGet() {
-		return call("admin_httpGet", new Object[] {});
+		return call_String("admin_httpGet", new Object[] {});
 	}
 
 	@Override
 	public String admin_nodeInfo() {
-		return call("admin_nodeInfo", new Object[] {});
+		return call_String("admin_nodeInfo", new Object[] {});
 	}
 
 	@Override
 	public String admin_peers() {
-		return call("admin_peers", new Object[] {});
+		return call_String("admin_peers", new Object[] {});
 	}
 
 	@Override
 	public String admin_datadir() {
-		return call("admin_datadir", new Object[] {});
+		return call_String("admin_datadir", new Object[] {});
 	}
 
 	@Override
 	public String net_addPeer() {
-		return call("net_addPeer", new Object[] {});
+		return call_String("net_addPeer", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_start() {
-		return call("miner_start", new Object[] {});
+		return call_Boolean("miner_start", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_stop() {
-		return call("miner_stop", new Object[] {});
+		return call_Boolean("miner_stop", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setEtherbase(String coinBase) throws Exception {
-		return call("miner_setEtherbase", new Object[] {});
+		return call_Boolean("miner_setEtherbase", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setExtra(String data) throws Exception {
-		return call("miner_setExtra", new Object[] {});
+		return call_Boolean("miner_setExtra", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_setGasPrice(String newMinGasPrice) {
-		return call("miner_setGasPrice", new Object[] {});
+		return call_Boolean("miner_setGasPrice", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_startAutoDAG() {
-		return call("miner_startAutoDAG", new Object[] {});
+		return call_Boolean("miner_startAutoDAG", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_stopAutoDAG() {
-		return call("miner_stopAutoDAG", new Object[] {});
+		return call_Boolean("miner_stopAutoDAG", new Object[] {});
 	}
 
 	@Override
 	public boolean miner_makeDAG() {
-		return call("miner_makeDAG", new Object[] {});
+		return call_Boolean("miner_makeDAG", new Object[] {});
 	}
 
 	@Override
 	public String miner_hashrate() {
-		return call("miner_hashrate", new Object[] {});
+		return call_String("miner_hashrate", new Object[] {});
 	}
 
 	@Override
 	public String debug_printBlock() {
-		return call("debug_printBlock", new Object[] {});
+		return call_String("debug_printBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_getBlockRlp() {
-		return call("debug_getBlockRlp", new Object[] {});
+		return call_String("debug_getBlockRlp", new Object[] {});
 	}
 
 	@Override
 	public String debug_setHead() {
-		return call("debug_setHead", new Object[] {});
+		return call_String("debug_setHead", new Object[] {});
 	}
 
 	@Override
 	public String debug_processBlock() {
-		return call("debug_processBlock", new Object[] {});
+		return call_String("debug_processBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_seedHash() {
-		return call("debug_seedHash", new Object[] {});
+		return call_String("debug_seedHash", new Object[] {});
 	}
 
 	@Override
 	public String debug_dumpBlock() {
-		return call("debug_dumpBlock", new Object[] {});
+		return call_String("debug_dumpBlock", new Object[] {});
 	}
 
 	@Override
 	public String debug_metrics() {
-		return call("debug_metrics", new Object[] {});
+		return call_String("debug_metrics", new Object[] {});
 	}
 
 	@Override
 	public String personal_newAccount(String seed) {
-		return call("personal_newAccount", new Object[] {});
+		return call_String("personal_newAccount", new Object[] {});
 	}
 
 	@Override
 	public boolean personal_unlockAccount(String addr, String pass, String duration) {
-		return call("personal_unlockAccount", new Object[] {});
+		return call_Boolean("personal_unlockAccount", new Object[] {});
 	}
 
 	@Override
 	public String[] personal_listAccounts() {
-		return call("personal_listAccounts", new Object[] {});
+		return (String[]) call("personal_listAccounts", new Object[] {}, String[].class);
+	}
+
+	/* JSON-RPC call routines */
+
+	protected String call_String(String method, Object[] params) {
+		return (String) call(method, params, String.class);
+	}
+
+	protected Boolean call_Boolean(String method, Object[] params) {
+		return (Boolean) call(method, params, Boolean.class);
+	}
+
+	protected Object call(String method, Object[] params, Class<?> responseClass) {
+		Object rsp = null;
+		try {
+			rsp = client.invoke(method, params, responseClass);
+		} catch (Throwable e) {
+			LOG.error(method + " failed", e);
+		}
+		return rsp;
 	}
 
 }

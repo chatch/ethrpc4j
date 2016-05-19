@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EthereumClientTest {
+public class EthereumClientITTest {
 
 	final String GETH_PATH = "http://localhost:8545";
 
