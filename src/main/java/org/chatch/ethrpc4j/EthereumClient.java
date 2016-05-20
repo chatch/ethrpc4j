@@ -104,120 +104,126 @@ public class EthereumClient implements JsonRpc {
 
 	@Override
 	public String eth_getBalance(String address, String block) throws Exception {
-		return call_String("eth_getBalance", new Object[] {});
+		return call_String("eth_getBalance", new Object[] { address, block });
 	}
 
 	@Override
 	public String eth_getBalance(String address) throws Exception {
-		return call_String("eth_getBalance", new Object[] {});
+		return call_String("eth_getBalance", new Object[] { address });
 	}
 
 	@Override
 	public String eth_getStorageAt(String address, String storageIdx, String blockId) throws Exception {
-		return call_String("eth_getStorageAt", new Object[] {});
+		return call_String("eth_getStorageAt", new Object[] { address, storageIdx, blockId });
 	}
 
 	@Override
 	public String eth_getTransactionCount(String address, String blockId) throws Exception {
-		return call_String("eth_getTransactionCount", new Object[] {});
+		return call_String("eth_getTransactionCount", new Object[] { address, blockId });
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByHash(String blockHash) throws Exception {
-		return call_String("eth_getBlockTransactionCountByHash", new Object[] {});
+		return call_String("eth_getBlockTransactionCountByHash", new Object[] { blockHash });
 	}
 
 	@Override
 	public String eth_getBlockTransactionCountByNumber(String bnOrId) throws Exception {
-		return call_String("eth_getBlockTransactionCountByNumber", new Object[] {});
+		return call_String("eth_getBlockTransactionCountByNumber", new Object[] { bnOrId });
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockHash(String blockHash) throws Exception {
-		return call_String("eth_getUncleCountByBlockHash", new Object[] {});
+		return call_String("eth_getUncleCountByBlockHash", new Object[] { blockHash });
 	}
 
 	@Override
 	public String eth_getUncleCountByBlockNumber(String bnOrId) throws Exception {
-		return call_String("eth_getUncleCountByBlockNumber", new Object[] {});
+		return call_String("eth_getUncleCountByBlockNumber", new Object[] { bnOrId });
 	}
 
 	@Override
 	public String eth_getCode(String addr, String bnOrId) throws Exception {
-		return call_String("eth_getCode", new Object[] {});
+		return call_String("eth_getCode", new Object[] { addr, bnOrId });
 	}
 
 	@Override
 	public String eth_sign(String addr, String data) throws Exception {
-		return call_String("eth_sign", new Object[] {});
+		return call_String("eth_sign", new Object[] { addr, data });
 	}
 
 	@Override
 	public String eth_sendTransaction(CallArguments transactionArgs) throws Exception {
-		return call_String("eth_sendTransaction", new Object[] {});
+		return call_String("eth_sendTransaction", new Object[] { transactionArgs });
 	}
 
 	@Override
 	public String eth_sendTransaction(String from, String to, String gas, String gasPrice, String value, String data,
 			String nonce) throws Exception {
-		return call_String("eth_sendTransaction", new Object[] {});
+		return call_String("eth_sendTransaction", new Object[] { from, to, gas, gasPrice, value, data, nonce });
 	}
 
 	@Override
 	public String eth_sendRawTransaction(String rawData) throws Exception {
-		return call_String("eth_sendRawTransaction", new Object[] {});
+		return call_String("eth_sendRawTransaction", new Object[] { rawData });
 	}
 
 	@Override
 	public String eth_call(CallArguments args, String bnOrId) throws Exception {
-		return call_String("eth_call", new Object[] {});
+		return call_String("eth_call", new Object[] { bnOrId });
 	}
 
 	@Override
 	public String eth_estimateGas(CallArguments args) throws Exception {
-		return call_String("eth_estimateGas", new Object[] {});
+		return call_String("eth_estimateGas", new Object[] { args });
 	}
 
 	@Override
 	public BlockResult eth_getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
-		return (BlockResult) call("eth_getBlockByHash", new Object[] {}, BlockResult.class);
+		return (BlockResult) call("eth_getBlockByHash", new Object[] { blockHash, fullTransactionObjects },
+				BlockResult.class);
 	}
 
 	@Override
 	public BlockResult eth_getBlockByNumber(String bnOrId, Boolean fullTransactionObjects) throws Exception {
-		return (BlockResult) call("eth_getBlockByNumber", new Object[] {}, BlockResult.class);
+		return (BlockResult) call("eth_getBlockByNumber", new Object[] { bnOrId, fullTransactionObjects },
+				BlockResult.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByHash(String transactionHash) throws Exception {
-		return (TransactionResultDTO) call("eth_getTransactionByHash", new Object[] {}, TransactionResultDTO.class);
+		return (TransactionResultDTO) call("eth_getTransactionByHash", new Object[] { transactionHash },
+				TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockHashAndIndex(String blockHash, String index) throws Exception {
-		return (TransactionResultDTO) call("eth_getTransactionByBlockHashAndIndex", new Object[] {},
+		return (TransactionResultDTO) call("eth_getTransactionByBlockHashAndIndex", new Object[] { blockHash, index },
 				TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionResultDTO eth_getTransactionByBlockNumberAndIndex(String bnOrId, String index) throws Exception {
-		return (TransactionResultDTO) call("eth_getTransactionByBlockNumberAndIndex", new Object[] {},
+		return (TransactionResultDTO) call("eth_getTransactionByBlockNumberAndIndex", new Object[] { bnOrId, index },
 				TransactionResultDTO.class);
 	}
 
 	@Override
 	public TransactionReceiptDTO eth_getTransactionReceipt(String transactionHash) throws Exception {
-		return (TransactionReceiptDTO) call("eth_getTransactionReceipt", new Object[] {}, TransactionReceiptDTO.class);
+		return (TransactionReceiptDTO) call("eth_getTransactionReceipt", new Object[] { transactionHash },
+				TransactionReceiptDTO.class);
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockHashAndIndex(String blockHash, String uncleIdx) throws Exception {
-		return (BlockResult) call("eth_getUncleByBlockHashAndIndex", new Object[] {}, BlockResult.class);
+		return (BlockResult) call("eth_getUncleByBlockHashAndIndex", new Object[] { blockHash, uncleIdx },
+				BlockResult.class);
 	}
 
 	@Override
 	public BlockResult eth_getUncleByBlockNumberAndIndex(String blockId, String uncleIdx) throws Exception {
-		return (BlockResult) call("eth_getUncleByBlockNumberAndIndex", new Object[] {}, BlockResult.class);
+		return (BlockResult) call("eth_getUncleByBlockNumberAndIndex", new Object[] { blockId, uncleIdx },
+				BlockResult.class);
 	}
 
 	@Override
@@ -572,7 +578,9 @@ public class EthereumClient implements JsonRpc {
 
 	@Override
 	public String[] personal_listAccounts() {
-		return (String[]) call("personal_listAccounts", new Object[] {}, String[].class);
+		// return (String[]) call("personal_listAccounts", new Object[] {},
+		// String[].class);
+		throw new IllegalStateException("not implemented");
 	}
 
 	/* JSON-RPC call routines */

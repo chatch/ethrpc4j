@@ -20,7 +20,7 @@ compileTestJava {
 }
 
 repositories {
-	mavenLocal()
+    mavenLocal()
     jcenter()
 }
 
@@ -28,7 +28,7 @@ repositories {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.18'
     compile 'com.github.briandilley.jsonrpc4j:jsonrpc4j:1.4.5'
-    compile 'org.ethereum:ethereumj-core:1.2.5-SNAPSHOT'
+    compile 'org.ethereum:ethereumj-core:1.2.6-SNAPSHOT' // local build of fork
     // compile 'org.ethereum:ethereumj-core:1.2.5-RELEASE'
 
     testCompile 'junit:junit:4.12'
