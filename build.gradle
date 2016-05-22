@@ -27,15 +27,8 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.18'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
     compile 'com.github.briandilley.jsonrpc4j:jsonrpc4j:1.4.5'
-    
-    // local build of fork - comment out release version for now ..
-    // compile 'org.ethereum:ethereumj-core:1.2.5-RELEASE'
-    compile ('org.ethereum:ethereumj-core:1.2.6-SNAPSHOT') { 
-        exclude group: "log4j"
-        exclude group: "org.slf4j", module: "log4j-over-slf4j"
-        exclude group: "org.slf4j", module: "slf4j-log4j12"
-    }
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-all:1.3'

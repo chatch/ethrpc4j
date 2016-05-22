@@ -1,13 +1,9 @@
 package org.chatch.ethrpc4j.methods;
 
-import org.ethereum.jsonrpc.JsonRpc.BlockResult;
-import org.ethereum.jsonrpc.JsonRpc.CallArguments;
-import org.ethereum.jsonrpc.JsonRpc.CompilationResult;
-import org.ethereum.jsonrpc.JsonRpc.FilterRequest;
-import org.ethereum.jsonrpc.JsonRpc.SyncingResult;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
-import org.ethereum.jsonrpc.TransactionReceiptDTO;
-import org.ethereum.jsonrpc.TransactionResultDTO;
+import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Syncing;
+import org.chatch.ethrpc4j.types.Transaction;
 
 public class EthMethods extends MethodsBase {
 
@@ -21,193 +17,190 @@ public class EthMethods extends MethodsBase {
 		return (String) call("protocolVersion", null, String.class);
 	}
 
-	public SyncingResult syncing() {
-		return null;
+	public Syncing syncing() throws Exception {
+		return (Syncing) call("syncing", null, Syncing.class);
 	}
 
-	public String coinbase() {
-		return null;
+	public String coinbase() throws Exception {
+		return (String) call("coinbase", null, String.class);
 	}
 
-	public Boolean mining() {
-		return null;
+	public Boolean mining() throws Exception {
+		return (Boolean) call("mining", null, Boolean.class);
 	}
 
-	public String hashrate() {
-		return null;
+	public String hashrate() throws Exception {
+		return (String) call("hashrate", null, String.class);
 	}
 
-	public String gasPrice() {
-		return null;
+	public String gasPrice() throws Exception {
+		return (String) call("gasPrice", null, String.class);
 	}
 
-	public String[] accounts() {
-		return null;
+	public String[] accounts() throws Exception {
+		return (String[]) call("accounts", null, String[].class);
 	}
 
-	public String blockNumber() {
-		return null;
+	public String blockNumber() throws Exception {
+		return (String) call("blockNumber", null, String.class);
 	}
 
 	public String getBalance(String address, String block) throws Exception {
-		return null;
+		return (String) call("getBalance", new Object[] { address, block }, String.class);
 	}
 
 	public String getBalance(String address) throws Exception {
-		return null;
+		return (String) call("getBalance", new Object[] { address }, String.class);
 	}
 
 	public String getStorageAt(String address, String storageIdx, String blockId) throws Exception {
-		return null;
+		return (String) call("getStorageAt", new Object[] { address, storageIdx, blockId }, String.class);
 	}
 
 	public String getTransactionCount(String address, String blockId) throws Exception {
-		return null;
+		return (String) call("getTransactionCount", new Object[] { address, blockId }, String.class);
 	}
 
 	public String getBlockTransactionCountByHash(String blockHash) throws Exception {
-		return null;
+		return (String) call("getBlockTransactionCountByHash", new Object[] { blockHash }, String.class);
 	}
 
 	public String getBlockTransactionCountByNumber(String bnOrId) throws Exception {
-		return null;
+		return (String) call("getBlockTransactionCountByNumber", new Object[] { bnOrId }, String.class);
 	}
 
 	public String getUncleCountByBlockHash(String blockHash) throws Exception {
-		return null;
+		return (String) call("getUncleCountByBlockHash", new Object[] { blockHash }, String.class);
 	}
 
 	public String getUncleCountByBlockNumber(String bnOrId) throws Exception {
-		return null;
+		return (String) call("getUncleCountByBlockNumber", new Object[] { bnOrId }, String.class);
 	}
 
 	public String getCode(String addr, String bnOrId) throws Exception {
-		return null;
+		return (String) call("getCode", new Object[] { addr, bnOrId }, String.class);
 	}
 
 	public String sign(String addr, String data) throws Exception {
-		return null;
+		return (String) call("sign", new Object[] { addr, data }, String.class);
 	}
 
-	public String sendTransaction(CallArguments transactionArgs) throws Exception {
-		return null;
-	}
-
-	// TODO: Remove, obsolete with this params
 	public String sendTransaction(String from, String to, String gas, String gasPrice, String value, String data,
 			String nonce) throws Exception {
-		return null;
+		return (String) call("sendTransaction", new Object[] { from, to, gas, gasPrice, value, data, nonce },
+				String.class);
 	}
 
 	public String sendRawTransaction(String rawData) throws Exception {
-		return null;
+		return (String) call("sendRawTransaction", new Object[] { rawData }, String.class);
 	}
 
-	public String call(CallArguments args, String bnOrId) throws Exception {
-		return null;
+	public String call(String from, String to, String gas, String gasPrice, String value, String data)
+			throws Exception {
+		return (String) call("call", new Object[] { from, to, gas, gasPrice, value, data }, String.class);
 	}
 
-	public String estimateGas(CallArguments args) throws Exception {
-		return null;
+	public String estimateGas(String from, String to, String gas, String gasPrice, String value, String data)
+			throws Exception {
+		return (String) call("estimateGas", new Object[] { from, to, gas, gasPrice, value, data }, String.class);
 	}
 
-	public BlockResult getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
-		return null;
+	public Block getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
+		return (Block) call("getBlockByHash", new Object[] { blockHash, fullTransactionObjects }, Block.class);
 	}
 
-	public BlockResult getBlockByNumber(String bnOrId, Boolean fullTransactionObjects) throws Exception {
-		return null;
+	public Block getBlockByNumber(String bnOrId, Boolean fullTransactionObjects) throws Exception {
+		return (Block) call("getBlockByNumber", new Object[] { bnOrId, fullTransactionObjects }, Block.class);
 	}
 
-	public TransactionResultDTO getTransactionByHash(String transactionHash) throws Exception {
-		return null;
+	public Transaction getTransactionByHash(String transactionHash) throws Exception {
+		return (Transaction) call("getTransactionByHash", new Object[] { transactionHash }, Transaction.class);
 	}
 
-	public TransactionResultDTO getTransactionByBlockHashAndIndex(String blockHash, String index) throws Exception {
-		return null;
+	public Transaction getTransactionByBlockHashAndIndex(String blockHash, String index) throws Exception {
+		return (Transaction) call("getTransactionByBlockHashAndIndex", new Object[] { blockHash, index },
+				Transaction.class);
 	}
 
-	public TransactionResultDTO getTransactionByBlockNumberAndIndex(String bnOrId, String index) throws Exception {
-		return null;
+	public Transaction getTransactionByBlockNumberAndIndex(String bnOrId, String index) throws Exception {
+		return (Transaction) call("getTransactionByBlockNumberAndIndex", new Object[] { bnOrId, index },
+				Transaction.class);
 	}
 
-	public TransactionReceiptDTO getTransactionReceipt(String transactionHash) throws Exception {
-		return null;
+	public Transaction getTransactionReceipt(String transactionHash) throws Exception {
+		return (Transaction) call("getTransactionReceipt", new Object[] { transactionHash }, Transaction.class);
 	}
 
-	public BlockResult getUncleByBlockHashAndIndex(String blockHash, String uncleIdx) throws Exception {
-		return null;
+	public Block getUncleByBlockHashAndIndex(String blockHash, String uncleIdx) throws Exception {
+		return (Block) call("getUncleByBlockHashAndIndex", new Object[] { blockHash, uncleIdx }, Block.class);
 	}
 
-	public BlockResult getUncleByBlockNumberAndIndex(String blockId, String uncleIdx) throws Exception {
-		return null;
+	public Block getUncleByBlockNumberAndIndex(String blockId, String uncleIdx) throws Exception {
+		return (Block) call("getUncleByBlockNumberAndIndex", new Object[] { blockId, uncleIdx }, Block.class);
 	}
 
-	public String[] getCompilers() {
-		return null;
+	public String[] getCompilers() throws Exception {
+		return (String[]) call("getCompilers", null, String[].class);
 	}
 
-	public CompilationResult compileLLL(String contract) {
-		return null;
+	public byte[] compileLLL(String contract) throws Exception {
+		return (byte[]) call("compileLLL", new Object[] { contract }, byte[].class);
 	}
 
-	public CompilationResult compileSolidity(String contract) throws Exception {
-		return null;
+	public byte[] compileSolidity(String contract) throws Exception {
+		return (byte[]) call("compileSolidity", new Object[] { contract }, byte[].class);
 	}
 
-	public CompilationResult compileSerpent(String contract) {
-		return null;
+	public byte[] compileSerpent(String contract) throws Exception {
+		return (byte[]) call("compileSerpent", new Object[] { contract }, byte[].class);
 	}
 
-	public String resend() {
-		return null;
+	public String resend() throws Exception {
+		return (String) call("resend", null, String.class);
 	}
 
-	public String pendingTransactions() {
-		return null;
+	public String pendingTransactions() throws Exception {
+		return (String) call("pendingTransactions", null, String.class);
 	}
 
-	public String newFilter(FilterRequest fr) throws Exception {
-		return null;
+	public String newFilter(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
+		return (String) call("newFilter", new Object[] { fromBlock, toBlock, address, topics }, String.class);
 	}
 
-	// String newFilter(String fromBlock, String toBlock, String address,
-	// String[] topics) throws Exception { return null; }
-
-	public String newBlockFilter() {
-		return null;
+	public String newBlockFilter() throws Exception {
+		return (String) call("newBlockFilter", null, String.class);
 	}
 
-	public String newPendingTransactionFilter() {
-		return null;
+	public String newPendingTransactionFilter() throws Exception {
+		return (String) call("newPendingTransactionFilter", null, String.class);
 	}
 
-	public Boolean uninstallFilter(String id) {
-		return null;
+	public Boolean uninstallFilter(String id) throws Exception {
+		return (Boolean) call("uninstallFilter", new Object[] { id }, Boolean.class);
 	}
 
-	public Object[] getFilterChanges(String id) {
-		return null;
+	public Object[] getFilterChanges(String id) throws Exception {
+		return (Object[]) call("getFilterChanges", new Object[] { id }, Object[].class);
 	}
 
-	public Object[] getFilterLogs(String id) {
-		return null;
+	public Object[] getFilterLogs(String id) throws Exception {
+		return (Object[]) call("getFilterLogs", new Object[] { id }, Object[].class);
 	}
 
-	public Object[] getLogs(FilterRequest fr) throws Exception {
-		return null;
+	public Object[] getLogs(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
+		return (Object[]) call("getLogs", new Object[] { fromBlock, toBlock, address, topics }, Object[].class);
 	}
 
-	public String getWork() {
-		return null;
+	public String getWork() throws Exception {
+		return (String) call("getWork", null, String.class);
 	}
 
-	public String submitWork() {
-		return null;
+	public String submitWork() throws Exception {
+		return (String) call("submitWork", null, String.class);
 	}
 
-	public String submitHashrate() {
-		return null;
+	public String submitHashrate() throws Exception {
+		return (String) call("submitHashrate", null, String.class);
 	}
 
 }
