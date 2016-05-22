@@ -2,18 +2,18 @@ package org.chatch.ethrpc4j.types;
 
 public class Transaction {
 
-	public String hash;
-	public String nonce;
-	public String blockHash;
-	public String blockNumber;
-	public String transactionIndex;
+	private String hash;
+	private String nonce;
+	private String blockHash;
+	private String blockNumber;
+	private String transactionIndex;
 
-	public String from;
-	public String to;
-	public String gas;
-	public String gasPrice;
-	public String value;
-	public String input;
+	private String from;
+	private String to;
+	private String gas;
+	private String gasPrice;
+	private String value;
+	private String input;
 
 	public String getHash() {
 		return hash;
