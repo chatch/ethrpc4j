@@ -3,60 +3,105 @@ package org.chatch.ethrpc4j.types;
 public class Transaction {
 
 	private String hash;
-	private String nonce;
+	private Long nonce;
 	private String blockHash;
-	private String blockNumber;
-	private String transactionIndex;
+	private Long blockNumber;
+	private Long transactionIndex;
 
 	private String from;
 	private String to;
-	private String gas;
-	private String gasPrice;
-	private String value;
+
+	private Long gas;
+	private Long gasPrice;
+	private Long value;
 	private String input;
 
 	public String getHash() {
 		return hash;
 	}
 
-	public String getNonce() {
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	public Long getNonce() {
 		return nonce;
+	}
+
+	public void setNonce(Long nonce) {
+		this.nonce = nonce;
 	}
 
 	public String getBlockHash() {
 		return blockHash;
 	}
 
-	public String getBlockNumber() {
+	public void setBlockHash(String blockHash) {
+		this.blockHash = blockHash;
+	}
+
+	public Long getBlockNumber() {
 		return blockNumber;
 	}
 
-	public String getTransactionIndex() {
+	public void setBlockNumber(Long blockNumber) {
+		this.blockNumber = blockNumber;
+	}
+
+	public Long getTransactionIndex() {
 		return transactionIndex;
+	}
+
+	public void setTransactionIndex(Long transactionIndex) {
+		this.transactionIndex = transactionIndex;
 	}
 
 	public String getFrom() {
 		return from;
 	}
 
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
 	public String getTo() {
 		return to;
 	}
 
-	public String getGas() {
+	public void setTo(String to) {
+		this.to = to;
+	}
+
+	public Long getGas() {
 		return gas;
 	}
 
-	public String getGasPrice() {
+	public void setGas(Long gas) {
+		this.gas = gas;
+	}
+
+	public Long getGasPrice() {
 		return gasPrice;
 	}
 
-	public String getValue() {
+	public void setGasPrice(Long gasPrice) {
+		this.gasPrice = gasPrice;
+	}
+
+	public Long getValue() {
 		return value;
+	}
+
+	public void setValue(Long value) {
+		this.value = value;
 	}
 
 	public String getInput() {
 		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 	@Override

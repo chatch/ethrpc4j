@@ -39,12 +39,4 @@ public class HttpRpcProvider implements RpcProvider {
 		return rsp;
 	}
 
-	protected String call_String(String method, Object[] params) {
-		return (String) call(method, params, String.class);
-	}
-
-	protected Boolean call_Boolean(String method, Object[] params) {
-		return (Boolean) call(method, params, Boolean.class);
-	}
-
 }

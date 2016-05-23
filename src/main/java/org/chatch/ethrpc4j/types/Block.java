@@ -13,7 +13,7 @@ public class Block {
 	// TODO: change to actual types from strings:
 	// see block.go - a number of numbers here are actually 64bit big.Ints (Long
 	// in Java)
-	private String number;
+	private Long number;
 	private String hash;
 	private String parentHash;
 	private String nonce;
@@ -23,90 +23,166 @@ public class Block {
 	private String stateRoot;
 	private String receiptRoot;
 	private String miner;
-	private String difficulty;
-	private String totalDifficulty;
+	private Long difficulty;
+	private Long totalDifficulty;
 	private String extraData;
-	private String size;
-	private String gasLimit;
-	private String gasUsed;
-	private String timestamp;
+	private Long size;
+	private Long gasLimit;
+	private Long gasUsed;
+	private Long timestamp;
 	private Object[] transactions;
 	private String[] uncles;
 
-	public String getNumber() {
+	public Long getNumber() {
 		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public String getHash() {
 		return hash;
 	}
 
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
 	public String getParentHash() {
 		return parentHash;
+	}
+
+	public void setParentHash(String parentHash) {
+		this.parentHash = parentHash;
 	}
 
 	public String getNonce() {
 		return nonce;
 	}
 
+	public void setNonce(String nonce) {
+		this.nonce = nonce;
+	}
+
 	public String getSha3Uncles() {
 		return sha3Uncles;
+	}
+
+	public void setSha3Uncles(String sha3Uncles) {
+		this.sha3Uncles = sha3Uncles;
 	}
 
 	public String getLogsBloom() {
 		return logsBloom;
 	}
 
+	public void setLogsBloom(String logsBloom) {
+		this.logsBloom = logsBloom;
+	}
+
 	public String getTransactionsRoot() {
 		return transactionsRoot;
+	}
+
+	public void setTransactionsRoot(String transactionsRoot) {
+		this.transactionsRoot = transactionsRoot;
 	}
 
 	public String getStateRoot() {
 		return stateRoot;
 	}
 
+	public void setStateRoot(String stateRoot) {
+		this.stateRoot = stateRoot;
+	}
+
 	public String getReceiptRoot() {
 		return receiptRoot;
+	}
+
+	public void setReceiptRoot(String receiptRoot) {
+		this.receiptRoot = receiptRoot;
 	}
 
 	public String getMiner() {
 		return miner;
 	}
 
-	public String getDifficulty() {
+	public void setMiner(String miner) {
+		this.miner = miner;
+	}
+
+	public Long getDifficulty() {
 		return difficulty;
 	}
 
-	public String getTotalDifficulty() {
+	public void setDifficulty(Long difficulty) {
+		this.difficulty = difficulty;
+	}
+
+	public Long getTotalDifficulty() {
 		return totalDifficulty;
+	}
+
+	public void setTotalDifficulty(Long totalDifficulty) {
+		this.totalDifficulty = totalDifficulty;
 	}
 
 	public String getExtraData() {
 		return extraData;
 	}
 
-	public String getSize() {
+	public void setExtraData(String extraData) {
+		this.extraData = extraData;
+	}
+
+	public Long getSize() {
 		return size;
 	}
 
-	public String getGasLimit() {
+	public void setSize(Long size) {
+		this.size = size;
+	}
+
+	public Long getGasLimit() {
 		return gasLimit;
 	}
 
-	public String getGasUsed() {
+	public void setGasLimit(Long gasLimit) {
+		this.gasLimit = gasLimit;
+	}
+
+	public Long getGasUsed() {
 		return gasUsed;
 	}
 
-	public String getTimestamp() {
+	public void setGasUsed(Long gasUsed) {
+		this.gasUsed = gasUsed;
+	}
+
+	public Long getTimestamp() {
 		return timestamp;
+	}
+
+	public void setTimestamp(Long timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public Object[] getTransactions() {
 		return transactions;
 	}
 
+	public void setTransactions(Object[] transactions) {
+		this.transactions = transactions;
+	}
+
 	public String[] getUncles() {
 		return uncles;
+	}
+
+	public void setUncles(String[] uncles) {
+		this.uncles = uncles;
 	}
 
 	@Override

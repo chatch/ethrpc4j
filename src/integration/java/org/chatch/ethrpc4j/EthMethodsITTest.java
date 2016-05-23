@@ -1,7 +1,7 @@
 package org.chatch.ethrpc4j;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.net.MalformedURLException;
 
@@ -66,9 +66,10 @@ public class EthMethodsITTest {
 	}
 
 	@Test
-	public void test_GetTransactionByHash() throws Throwable {
+	public void testGetTransactionByHash() throws Throwable {
 		final String TX_HASH = "0x1a7e99b6f1a3e34b234f37fbc1b340f90cc7b5c50e70750870cdbcde14f218d0";
 		Transaction tx = eth.getTransactionByHash(TX_HASH);
+		System.out.println(tx);
 		assertThat(tx.getNonce(), equalTo("0x1003b0"));
 		assertThat(tx.getTransactionIndex(), equalTo("0x4"));
 		assertThat(tx.getFrom(), equalTo("0x687422eea2cb73b5d3e242ba5456b782919afc85"));
