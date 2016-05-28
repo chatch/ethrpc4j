@@ -36,7 +36,7 @@ public class HttpRpcProvider implements RpcProvider {
 	}
 
 	public HttpRpcProvider(URL serverURL, ObjectMapper mapper) {
-		this.client = new JsonRpcHttpClient(mapper, serverURL, new HashMap<>());
+		this.client = new JsonRpcHttpClient(mapper, serverURL, new HashMap<String,String>());
 	}
 
 	public HttpRpcProvider(JsonRpcHttpClient client) {

@@ -7,8 +7,8 @@ description = 'An Ethereum JSON RPC client for Java.'
 version = '0.0.1'
 group = 'org.chatch.ethrpc4j'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 compileJava {
     options.encoding = 'UTF-8'
