@@ -1,5 +1,7 @@
 package org.chatch.ethrpc4j.methods;
 
+import static org.chatch.ethrpc4j.databind.Converters.*;
+
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 import org.chatch.ethrpc4j.types.Block;
 import org.chatch.ethrpc4j.types.Syncing;
@@ -153,36 +155,28 @@ public class EthMethods extends MethodsBase {
 		return (byte[]) call("compileSerpent", new Object[] { contract }, byte[].class);
 	}
 
-	public String resend() throws Exception {
-		return callString("resend");
+	public Long newFilter(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
+		return callQuantity("newFilter", new Object[] { fromBlock, toBlock, address, topics });
 	}
 
-	public String pendingTransactions() throws Exception {
-		return callString("pendingTransactions");
+	public Long newBlockFilter() throws Exception {
+		return callQuantity("newBlockFilter");
 	}
 
-	public String newFilter(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
-		return callString("newFilter", new Object[] { fromBlock, toBlock, address, topics });
+	public Long newPendingTransactionFilter() throws Exception {
+		return callQuantity("newPendingTransactionFilter");
 	}
 
-	public String newBlockFilter() throws Exception {
-		return callString("newBlockFilter");
+	public Boolean uninstallFilter(Long filterId) throws Exception {
+		return callBoolean("uninstallFilter", new Object[] { quantityToHex(filterId) });
 	}
 
-	public String newPendingTransactionFilter() throws Exception {
-		return callString("newPendingTransactionFilter");
+	public Object[] getFilterChanges(Long filterId) throws Exception {
+		return (Object[]) call("getFilterChanges", new Object[] { quantityToHex(filterId) }, Object[].class);
 	}
 
-	public Boolean uninstallFilter(String id) throws Exception {
-		return callBoolean("uninstallFilter", new Object[] { id });
-	}
-
-	public Object[] getFilterChanges(String id) throws Exception {
-		return (Object[]) call("getFilterChanges", new Object[] { id }, Object[].class);
-	}
-
-	public Object[] getFilterLogs(String id) throws Exception {
-		return (Object[]) call("getFilterLogs", new Object[] { id }, Object[].class);
+	public Object[] getFilterLogs(Long filterId) throws Exception {
+		return (Object[]) call("getFilterLogs", new Object[] { quantityToHex(filterId) }, Object[].class);
 	}
 
 	public Object[] getLogs(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
@@ -193,12 +187,12 @@ public class EthMethods extends MethodsBase {
 		return (String[]) call("getWork", null, String[].class);
 	}
 
-	public Boolean submitWork() throws Exception {
-		return callBoolean("submitWork");
+	public Boolean submitWork(String nonce, String powHash, String mixDigest) throws Exception {
+		return callBoolean("submitWork", new Object[] { nonce, powHash, mixDigest });
 	}
 
-	public Boolean submitHashrate() throws Exception {
-		return callBoolean("submitHashrate");
+	public Boolean submitHashrate(String hashRate, String clientId) throws Exception {
+		return callBoolean("submitHashrate", new Object[] { hashRate, clientId });
 	}
 
 }

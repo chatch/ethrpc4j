@@ -33,6 +33,10 @@ public class Converters {
 		return Long.valueOf(hexNumber, 16);
 	}
 
+	public static String quantityToHex(Long hexNumber) {
+		return "0x" + Long.toHexString(hexNumber);
+	}
+
 	/**
 	 * DATA - see "Output HEX Values' at
 	 * https://github.com/ethereum/wiki/wiki/JSON-RPC
