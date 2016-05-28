@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
+import org.chatch.ethrpc4j.mapping.EthRpc4jObjectMapper;
 import org.chatch.ethrpc4j.test.Utils;
 import org.chatch.ethrpc4j.types.Block;
 import org.junit.Test;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class BlockDeserializerTest {
 
-	final static TestMapper mapper = new TestMapper();
+	final static EthRpc4jObjectMapper mapper = new EthRpc4jObjectMapper();
 
 	@Test
 	public void test() throws JsonParseException, JsonMappingException, IOException {

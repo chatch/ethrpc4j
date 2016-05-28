@@ -11,11 +11,11 @@ public class Web3Methods extends MethodsBase {
 	}
 
 	public String clientVersion() throws Exception {
-		return (String) call("clientVersion", null, String.class);
+		return callString("clientVersion");
 	}
 
 	public String sha3(String data) throws Exception {
-		return (String) call("sha3", new Object[] { data }, String.class);
+		return callString("sha3", new Object[] { data });
 	}
 
 }

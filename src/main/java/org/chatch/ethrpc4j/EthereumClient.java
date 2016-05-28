@@ -2,6 +2,7 @@ package org.chatch.ethrpc4j;
 
 import org.chatch.ethrpc4j.methods.DbMethods;
 import org.chatch.ethrpc4j.methods.EthMethods;
+import org.chatch.ethrpc4j.methods.NetMethods;
 import org.chatch.ethrpc4j.methods.PersonalMethods;
 import org.chatch.ethrpc4j.methods.ShhMethods;
 import org.chatch.ethrpc4j.methods.Web3Methods;
@@ -25,12 +26,15 @@ public class EthereumClient {
 
 	private PersonalMethods personal;
 
+	private NetMethods net;
+
 	public EthereumClient(RpcProvider provider) {
 		this.eth = new EthMethods(provider);
 		this.web3 = new Web3Methods(provider);
 		this.db = new DbMethods(provider);
 		this.shh = new ShhMethods(provider);
 		this.personal = new PersonalMethods(provider);
+		this.net = new NetMethods(provider);
 	}
 
 	public EthMethods eth() {
@@ -51,6 +55,10 @@ public class EthereumClient {
 
 	public PersonalMethods personal() {
 		return personal;
+	}
+
+	public NetMethods net() {
+		return net;
 	}
 
 }

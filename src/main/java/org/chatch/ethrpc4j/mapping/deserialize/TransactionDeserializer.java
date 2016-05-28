@@ -1,6 +1,6 @@
 package org.chatch.ethrpc4j.mapping.deserialize;
 
-import static org.chatch.ethrpc4j.mapping.MappingUtils.*;
+import static org.chatch.ethrpc4j.mapping.Converters.*;
 
 import java.io.IOException;
 

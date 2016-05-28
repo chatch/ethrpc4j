@@ -2,6 +2,12 @@ package org.chatch.ethrpc4j.methods;
 
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 
+/**
+ * DB RPC methods.
+ * 
+ * NOTE: this is a deprecated api @see
+ * <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC">api docs</a>.
+ */
 public class DbMethods extends MethodsBase {
 	private static final String METHOD_PREFIX = "db";
 
@@ -9,19 +15,24 @@ public class DbMethods extends MethodsBase {
 		super(METHOD_PREFIX, provider);
 	}
 
-	public String putString() {
-		return null;
+	@Deprecated
+	public Boolean putString(String dbName, String key, String value) throws Exception {
+		return callBoolean("putString", new Object[] { dbName, key, value });
 	}
 
-	public String getString() {
-		return null;
+	@Deprecated
+	public String getString(String dbName, String key) throws Exception {
+		return callString("getString", new Object[] { dbName, key });
 	}
 
-	public String putHex() {
-		return null;
+	@Deprecated
+	public Boolean putHex(String dbName, String key, byte[] data) throws Exception {
+		return callBoolean("putHex", new Object[] { dbName, key, data });
 	}
 
-	public String getHex() {
-		return null;
+	@Deprecated
+	public byte[] getHex(String dbName, String key) throws Exception {
+		return (byte[]) call("getHex", new Object[] { dbName, key }, String.class);
 	}
+
 }

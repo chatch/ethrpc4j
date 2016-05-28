@@ -1,8 +1,10 @@
 package org.chatch.ethrpc4j.mapping;
 
 import org.chatch.ethrpc4j.mapping.deserialize.BlockDeserializer;
+import org.chatch.ethrpc4j.mapping.deserialize.SyncingDeserializer;
 import org.chatch.ethrpc4j.mapping.deserialize.TransactionDeserializer;
 import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Syncing;
 import org.chatch.ethrpc4j.types.Transaction;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -14,6 +16,7 @@ public class EthRpc4JModule extends SimpleModule {
 	public EthRpc4JModule() {
 		addDeserializer(Block.class, new BlockDeserializer());
 		addDeserializer(Transaction.class, new TransactionDeserializer());
+		addDeserializer(Syncing.class, new SyncingDeserializer());
 	}
 
 	@Override

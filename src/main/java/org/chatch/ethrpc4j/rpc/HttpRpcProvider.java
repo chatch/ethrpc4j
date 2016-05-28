@@ -2,10 +2,13 @@ package org.chatch.ethrpc4j.rpc;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
+import org.chatch.ethrpc4j.mapping.EthRpc4jObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 
 public class HttpRpcProvider implements RpcProvider {
@@ -21,11 +24,11 @@ public class HttpRpcProvider implements RpcProvider {
 	}
 
 	public HttpRpcProvider(String serverURL) throws MalformedURLException {
-		this.client = new JsonRpcHttpClient(new URL(serverURL));
+		this(serverURL, new EthRpc4jObjectMapper());
 	}
 
-	public HttpRpcProvider(JsonRpcHttpClient jsonRpcClient) throws MalformedURLException {
-		this.client = jsonRpcClient;
+	public HttpRpcProvider(String serverURL, ObjectMapper mapper) throws MalformedURLException {
+		this.client = new JsonRpcHttpClient(mapper, new URL(serverURL), new HashMap<>());
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class EthMethods extends MethodsBase {
 	}
 
 	public String protocolVersion() throws Exception {
-		return (String) call("protocolVersion", null, String.class);
+		return callString("protocolVersion");
 	}
 
 	public Syncing syncing() throws Exception {
@@ -22,87 +22,85 @@ public class EthMethods extends MethodsBase {
 	}
 
 	public String coinbase() throws Exception {
-		return (String) call("coinbase", null, String.class);
+		return callString("coinbase");
 	}
 
 	public Boolean mining() throws Exception {
-		return (Boolean) call("mining", null, Boolean.class);
+		return callBoolean("mining");
 	}
 
-	public String hashrate() throws Exception {
-		return (String) call("hashrate", null, String.class);
+	public Long hashrate() throws Exception {
+		return callQuantity("hashrate", null);
 	}
 
-	public String gasPrice() throws Exception {
-		return (String) call("gasPrice", null, String.class);
+	public Long gasPrice() throws Exception {
+		return callQuantity("gasPrice");
 	}
 
 	public String[] accounts() throws Exception {
 		return (String[]) call("accounts", null, String[].class);
 	}
 
-	public String blockNumber() throws Exception {
-		return (String) call("blockNumber", null, String.class);
+	public Long blockNumber() throws Exception {
+		return callQuantity("blockNumber");
 	}
 
-	public String getBalance(String address, String block) throws Exception {
-		return (String) call("getBalance", new Object[] { address, block }, String.class);
+	public Long getBalance(Long address, Long block) throws Exception {
+		return callQuantity("getBalance", new Object[] { address, block });
 	}
 
-	public String getBalance(String address) throws Exception {
-		return (String) call("getBalance", new Object[] { address }, String.class);
+	public Long getBalance(Long address) throws Exception {
+		return callQuantity("getBalance", new Object[] { address });
 	}
 
 	public String getStorageAt(String address, String storageIdx, String blockId) throws Exception {
-		return (String) call("getStorageAt", new Object[] { address, storageIdx, blockId }, String.class);
+		return callString("getStorageAt", new Object[] { address, storageIdx, blockId });
 	}
 
-	public String getTransactionCount(String address, String blockId) throws Exception {
-		return (String) call("getTransactionCount", new Object[] { address, blockId }, String.class);
+	public Long getTransactionCount(Long address, Long blockId) throws Exception {
+		return callQuantity("getTransactionCount", new Object[] { address, blockId });
 	}
 
-	public String getBlockTransactionCountByHash(String blockHash) throws Exception {
-		return (String) call("getBlockTransactionCountByHash", new Object[] { blockHash }, String.class);
+	public Long getBlockTransactionCountByHash(Long blockHash) throws Exception {
+		return callQuantity("getBlockTransactionCountByHash", new Object[] { blockHash });
 	}
 
-	public String getBlockTransactionCountByNumber(String bnOrId) throws Exception {
-		return (String) call("getBlockTransactionCountByNumber", new Object[] { bnOrId }, String.class);
+	public Long getBlockTransactionCountByNumber(Long bnOrId) throws Exception {
+		return callQuantity("getBlockTransactionCountByNumber", new Object[] { bnOrId });
 	}
 
-	public String getUncleCountByBlockHash(String blockHash) throws Exception {
-		return (String) call("getUncleCountByBlockHash", new Object[] { blockHash }, String.class);
+	public Long getUncleCountByBlockHash(Long blockHash) throws Exception {
+		return callQuantity("getUncleCountByBlockHash", new Object[] { blockHash });
 	}
 
-	public String getUncleCountByBlockNumber(String bnOrId) throws Exception {
-		return (String) call("getUncleCountByBlockNumber", new Object[] { bnOrId }, String.class);
+	public Long getUncleCountByBlockNumber(Long bnOrId) throws Exception {
+		return callQuantity("getUncleCountByBlockNumber", new Object[] { bnOrId });
 	}
 
 	public String getCode(String addr, String bnOrId) throws Exception {
-		return (String) call("getCode", new Object[] { addr, bnOrId }, String.class);
+		return callString("getCode", new Object[] { addr, bnOrId });
 	}
 
 	public String sign(String addr, String data) throws Exception {
-		return (String) call("sign", new Object[] { addr, data }, String.class);
+		return callString("sign", new Object[] { addr, data });
 	}
 
 	public String sendTransaction(String from, String to, String gas, String gasPrice, String value, String data,
 			String nonce) throws Exception {
-		return (String) call("sendTransaction", new Object[] { from, to, gas, gasPrice, value, data, nonce },
-				String.class);
+		return callString("sendTransaction", new Object[] { from, to, gas, gasPrice, value, data, nonce });
 	}
 
 	public String sendRawTransaction(String rawData) throws Exception {
-		return (String) call("sendRawTransaction", new Object[] { rawData }, String.class);
+		return callString("sendRawTransaction", new Object[] { rawData });
 	}
 
 	public String call(String from, String to, String gas, String gasPrice, String value, String data)
 			throws Exception {
-		return (String) call("call", new Object[] { from, to, gas, gasPrice, value, data }, String.class);
+		return callString("call", new Object[] { from, to, gas, gasPrice, value, data });
 	}
 
-	public String estimateGas(String from, String to, String gas, String gasPrice, String value, String data)
-			throws Exception {
-		return (String) call("estimateGas", new Object[] { from, to, gas, gasPrice, value, data }, String.class);
+	public Long estimateGas(Long from, Long to, Long gas, Long gasPrice, Long value, Long data) throws Exception {
+		return callQuantity("estimateGas", new Object[] { from, to, gas, gasPrice, value, data });
 	}
 
 	public Block getBlockByHash(String blockHash, Boolean fullTransactionObjects) throws Exception {
@@ -156,27 +154,27 @@ public class EthMethods extends MethodsBase {
 	}
 
 	public String resend() throws Exception {
-		return (String) call("resend", null, String.class);
+		return callString("resend");
 	}
 
 	public String pendingTransactions() throws Exception {
-		return (String) call("pendingTransactions", null, String.class);
+		return callString("pendingTransactions");
 	}
 
 	public String newFilter(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
-		return (String) call("newFilter", new Object[] { fromBlock, toBlock, address, topics }, String.class);
+		return callString("newFilter", new Object[] { fromBlock, toBlock, address, topics });
 	}
 
 	public String newBlockFilter() throws Exception {
-		return (String) call("newBlockFilter", null, String.class);
+		return callString("newBlockFilter");
 	}
 
 	public String newPendingTransactionFilter() throws Exception {
-		return (String) call("newPendingTransactionFilter", null, String.class);
+		return callString("newPendingTransactionFilter");
 	}
 
 	public Boolean uninstallFilter(String id) throws Exception {
-		return (Boolean) call("uninstallFilter", new Object[] { id }, Boolean.class);
+		return callBoolean("uninstallFilter", new Object[] { id });
 	}
 
 	public Object[] getFilterChanges(String id) throws Exception {
@@ -191,16 +189,16 @@ public class EthMethods extends MethodsBase {
 		return (Object[]) call("getLogs", new Object[] { fromBlock, toBlock, address, topics }, Object[].class);
 	}
 
-	public String getWork() throws Exception {
-		return (String) call("getWork", null, String.class);
+	public String[] getWork() throws Exception {
+		return (String[]) call("getWork", null, String[].class);
 	}
 
-	public String submitWork() throws Exception {
-		return (String) call("submitWork", null, String.class);
+	public Boolean submitWork() throws Exception {
+		return callBoolean("submitWork");
 	}
 
-	public String submitHashrate() throws Exception {
-		return (String) call("submitHashrate", null, String.class);
+	public Boolean submitHashrate() throws Exception {
+		return callBoolean("submitHashrate");
 	}
 
 }

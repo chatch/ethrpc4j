@@ -4,7 +4,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class MappingUtils {
+public class Converters {
 
 	/**
 	 * JSON / Jackson helpers
