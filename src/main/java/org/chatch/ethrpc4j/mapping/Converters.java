@@ -10,7 +10,10 @@ public class Converters {
 	 * JSON / Jackson helpers
 	 */
 	public static String string(JsonNode node, String fieldName) {
-		return node.get(fieldName).asText();
+		String str = node.get(fieldName).asText();
+		if (str != null && str.equals("null")) // null is "null" in the json
+			str = null;
+		return str;
 	}
 
 	/**
@@ -23,6 +26,8 @@ public class Converters {
 	}
 
 	public static Long hexToQuantity(String hexNumber) {
+		if (hexNumber == null || hexNumber.equals("null"))
+			return null;
 		if (hexNumber.startsWith("0x"))
 			hexNumber = hexNumber.substring(2);
 		return Long.valueOf(hexNumber, 16);

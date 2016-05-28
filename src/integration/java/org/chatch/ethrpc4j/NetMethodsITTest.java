@@ -9,7 +9,6 @@ import org.chatch.ethrpc4j.methods.NetMethods;
 import org.chatch.ethrpc4j.rpc.HttpRpcProvider;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class NetMethodsITTest {
@@ -38,10 +37,8 @@ public class NetMethodsITTest {
 	}
 
 	@Test
-	@Ignore // Geth returning null.. not sure why ..
 	public void testPeerCount() throws Throwable {
 		Long peerCount = net.peerCount();
-		// may not have peers yet on test run so 0 is fine
 		assertThat(peerCount, greaterThanOrEqualTo(0L));
 	}
 

@@ -82,7 +82,7 @@ public class EthMethodsITTest {
 	public void testGetUncleByBlockHash() throws Throwable {
 		Block rsp = eth.getUncleByBlockHashAndIndex(
 				"0x44d0f987bf61c87d89c7b2952d0e911eaa5afb746a0c63c170849da7db28aa89", "0x0");
-		assertThat(rsp.getNumber(), equalTo("0xef511"));
+		assertThat(rsp.getNumber(), equalTo(980241L));
 		assertThat(rsp.getHash(), equalTo("0x1aa6b13577fbcd83bf8e41533befd31f393debe49af9f0aa7ffe499a8834b3cf"));
 		assertThat(rsp.getParentHash(), equalTo("0xf97a0e7989b209b0875857de2d31227e2b728a017109cceecfc0b2606bb1fb6b"));
 		assertThat(rsp.getNonce(), equalTo("0x7c5bcddfa63a6d11"));
