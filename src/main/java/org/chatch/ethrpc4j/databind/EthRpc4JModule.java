@@ -1,9 +1,11 @@
 package org.chatch.ethrpc4j.databind;
 
 import org.chatch.ethrpc4j.databind.deserialize.BlockDeserializer;
+import org.chatch.ethrpc4j.databind.deserialize.LogDeserializer;
 import org.chatch.ethrpc4j.databind.deserialize.SyncingDeserializer;
 import org.chatch.ethrpc4j.databind.deserialize.TransactionDeserializer;
 import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Log;
 import org.chatch.ethrpc4j.types.Syncing;
 import org.chatch.ethrpc4j.types.Transaction;
 
@@ -17,6 +19,7 @@ public class EthRpc4JModule extends SimpleModule {
 		addDeserializer(Block.class, new BlockDeserializer());
 		addDeserializer(Transaction.class, new TransactionDeserializer());
 		addDeserializer(Syncing.class, new SyncingDeserializer());
+		addDeserializer(Log.class, new LogDeserializer());
 	}
 
 	@Override

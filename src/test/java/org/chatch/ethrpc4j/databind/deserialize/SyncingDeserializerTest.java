@@ -34,6 +34,10 @@ public class SyncingDeserializerTest {
 
 		Syncing sync = mapper.readValue(json, Syncing.class);
 		assertTrue(sync.isSyncing());
-		assertThat(sync.getCurrentBlock(), greaterThanOrEqualTo(1L));
+		assertThat(sync.getCurrentBlock(), equalTo(1549655L));
+		assertThat(sync.getHighestBlock(), equalTo(1597644L));
+		assertThat(sync.getStartingBlock(), equalTo(1549296L));
+		assertThat(sync.getPulledStates(), equalTo(0L));
+		assertThat(sync.getKnownStates(), equalTo(0L));
 	}
 }

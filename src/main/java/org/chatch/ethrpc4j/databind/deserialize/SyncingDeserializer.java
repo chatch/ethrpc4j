@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 public class SyncingDeserializer extends StdDeserializer<Syncing> {
 
-	private static final long serialVersionUID = 8056640231156376310L;
+	private static final long serialVersionUID = -6815037000030647416L;
 
 	public SyncingDeserializer() {
 		super(Syncing.class);
