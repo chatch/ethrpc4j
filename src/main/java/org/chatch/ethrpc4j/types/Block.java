@@ -1,6 +1,6 @@
 package org.chatch.ethrpc4j.types;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Ethereum Block.
@@ -10,9 +10,6 @@ import java.util.Arrays;
  */
 public class Block {
 
-	// TODO: change to actual types from strings:
-	// see block.go - a number of numbers here are actually 64bit big.Ints (Long
-	// in Java)
 	private Long number;
 	private String hash;
 	private String parentHash;
@@ -30,8 +27,8 @@ public class Block {
 	private Long gasLimit;
 	private Long gasUsed;
 	private Long timestamp;
-	private Object[] transactions;
-	private String[] uncles;
+	private List<Transaction> transactions;
+	private List<String> uncles;
 
 	public Long getNumber() {
 		return number;
@@ -169,19 +166,19 @@ public class Block {
 		this.timestamp = timestamp;
 	}
 
-	public Object[] getTransactions() {
+	public List<Transaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(Object[] transactions) {
+	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
-	public String[] getUncles() {
+	public List<String> getUncles() {
 		return uncles;
 	}
 
-	public void setUncles(String[] uncles) {
+	public void setUncles(List<String> uncles) {
 		this.uncles = uncles;
 	}
 
@@ -192,7 +189,7 @@ public class Block {
 				+ ", stateRoot=" + stateRoot + ", receiptRoot=" + receiptRoot + ", miner=" + miner + ", difficulty="
 				+ difficulty + ", totalDifficulty=" + totalDifficulty + ", extraData=" + extraData + ", size=" + size
 				+ ", gasLimit=" + gasLimit + ", gasUsed=" + gasUsed + ", timestamp=" + timestamp + ", transactions="
-				+ Arrays.toString(transactions) + ", uncles=" + Arrays.toString(uncles) + "]";
+				+ transactions + ", uncles=" + uncles + "]";
 	}
 
 }

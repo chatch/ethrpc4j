@@ -4,10 +4,12 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.chatch.ethrpc4j.databind.EthRpc4jObjectMapper;
 import org.chatch.ethrpc4j.test.Utils;
 import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Transaction;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -22,7 +24,7 @@ public class BlockDeserializerTest {
 		String json = Utils.jsonRspResult("block");
 		System.out.println(json);
 
-		Block block = mapper.readValue(json, Block.class);
+		final Block block = mapper.readValue(json, Block.class);
 		assertThat(block, not(nullValue()));
 
 		assertThat(block.getNumber(), equalTo(935709L));
@@ -48,6 +50,28 @@ public class BlockDeserializerTest {
 				equalTo("0x2642c5b6853219edf77348c34f184b4ebabda73b0535f12ef572ecbd22ad4d69"));
 		assertThat(block.getMiner(), equalTo("0xdf712c685be75739eb44cb6665f92129e45864e4"));
 		assertThat(block.getExtraData(), equalTo("0xd783010500844765746887676f312e352e31856c696e7578"));
+
+		final List<Transaction> txs = block.getTransactions();
+		assertThat(txs, hasSize(3));
+
+		final Transaction tx = txs.get(0);
+		assertThat(tx.getBlockHash(), equalTo("0xc8537f462845d63684ebf16eba167b9ce7d48f1bd8392a8ec4d29b97d39bf62d"));
+		assertThat(tx.getHash(), equalTo("0x7ff4daece69a7986f2932b2ee800135265152022f042ff13b767d7ea63a7e5d6"));
+		assertThat(tx.getTo(), equalTo("0x87bd63264b9545391a2b129e856eb8aa79ca9e90"));
+		assertThat(tx.getFrom(), equalTo("0xdf712c685be75739eb44cb6665f92129e45864e4"));
+		assertThat(tx.getInput(), equalTo("0x"));
+
+		assertThat(tx.getBlockNumber(), equalTo(935709L));
+		assertThat(tx.getTransactionIndex(), equalTo(0L));
+		assertThat(tx.getNonce(), equalTo(1054078L));
+		assertThat(tx.getGas(), equalTo(90000L));
+		assertThat(tx.getGasPrice(), equalTo(20000000000L));
+		assertThat(tx.getValue(), equalTo(677362649999999800L));
+
+		final List<String> uncles = block.getUncles();
+		assertThat(uncles, hasSize(2));
+		assertThat(uncles.get(0), equalTo("0x0000000000"));
+		assertThat(uncles.get(1), equalTo("0xffffffffff"));
 	}
 
 }

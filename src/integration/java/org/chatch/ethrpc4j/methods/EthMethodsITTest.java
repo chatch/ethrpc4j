@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.chatch.ethrpc4j.EthereumClient;
 import org.chatch.ethrpc4j.rpc.HttpRpcProvider;
@@ -48,8 +49,8 @@ public class EthMethodsITTest {
 
 	@Test
 	public void testAccounts() throws Throwable {
-		String[] rsp = eth.accounts();
-		assertThat(rsp.length, greaterThan(0));
+		List<String> rsp = eth.accounts();
+		assertThat(rsp.size(), greaterThan(0));
 	}
 
 	@Test

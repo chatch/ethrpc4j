@@ -42,8 +42,9 @@ public class EthMethods extends MethodsBase {
 		return callQuantity("gasPrice");
 	}
 
-	public String[] accounts() throws Exception {
-		return (String[]) call("accounts", null, String[].class);
+	@SuppressWarnings("unchecked")
+	public List<String> accounts() throws Exception {
+		return (List<String>) call("accounts", null, List.class);
 	}
 
 	public Long blockNumber() throws Exception {
@@ -142,8 +143,9 @@ public class EthMethods extends MethodsBase {
 		return (Block) call("getUncleByBlockNumberAndIndex", new Object[] { blockId, uncleIdx }, Block.class);
 	}
 
-	public String[] getCompilers() throws Exception {
-		return (String[]) call("getCompilers", null, String[].class);
+	@SuppressWarnings("unchecked")
+	public List<String> getCompilers() throws Exception {
+		return (List<String>) call("getCompilers", null, List.class);
 	}
 
 	public byte[] compileLLL(String contract) throws Exception {

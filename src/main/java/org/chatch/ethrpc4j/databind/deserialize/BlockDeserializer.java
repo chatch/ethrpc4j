@@ -3,8 +3,12 @@ package org.chatch.ethrpc4j.databind.deserialize;
 import static org.chatch.ethrpc4j.databind.Converters.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.chatch.ethrpc4j.databind.EthRpc4jObjectMapper;
 import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Transaction;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,6 +19,8 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 public class BlockDeserializer extends StdDeserializer<Block> {
 
 	private static final long serialVersionUID = 5735633502874017641L;
+
+	private static final EthRpc4jObjectMapper mapper = EthRpc4jObjectMapper.getInstance();
 
 	public BlockDeserializer() {
 		super(Block.class);
@@ -45,11 +51,20 @@ public class BlockDeserializer extends StdDeserializer<Block> {
 		block.setMiner(string(node, "miner"));
 		block.setExtraData(string(node, "extraData"));
 
-		// Transaction[] txs;
-		// block.setTransactions(txs);
-		//
-		// String[] uncles;
-		// block.setUncles(uncles);
+		final List<Transaction> txList = new ArrayList<>();
+		for (JsonNode tx : node.get("transactions")) {
+			txList.add(mapper.treeToValue(tx, Transaction.class));
+		}
+		block.setTransactions(txList);
+
+		final JsonNode uncleNodes = node.get("uncles");
+		if (uncleNodes.isArray()) {
+			final List<String> unclesList = new ArrayList<>(uncleNodes.size());
+			for (JsonNode uncle : uncleNodes) {
+				unclesList.add(uncle.asText());
+			}
+			block.setUncles(unclesList);
+		}
 
 		return block;
 	}

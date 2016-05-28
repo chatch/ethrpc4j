@@ -1,5 +1,7 @@
 package org.chatch.ethrpc4j.example;
 
+import java.util.List;
+
 import org.chatch.ethrpc4j.EthereumClient;
 import org.chatch.ethrpc4j.methods.EthMethods;
 import org.chatch.ethrpc4j.types.Block;
@@ -18,9 +20,9 @@ public class SampleUsage {
 		LOG.info("clientVersion: " + client.web3().clientVersion());
 		LOG.info("protocolVersion: " + eth.protocolVersion());
 		LOG.info("accounts: ");
-		String[] accounts = eth.accounts();
-		for (int i = 0; i < accounts.length; i++) {
-			LOG.info("\t" + accounts[i]);
+		List<String> accounts = eth.accounts();
+		for (String hash : accounts) {
+			LOG.info("\t" + hash);
 		}
 		LOG.info("mining: " + eth.mining());
 		LOG.info("syncing: " + eth.syncing());
@@ -33,9 +35,9 @@ public class SampleUsage {
 
 		LOG.info("\nCompilers:\n");
 
-		String[] compilers = eth.getCompilers();
-		for (int i = 0; i < compilers.length; i++) {
-			LOG.info("" + compilers[i]);
+		List<String> compilers = eth.getCompilers();
+		for (String compiler : compilers) {
+			LOG.info("" + compiler);
 		}
 
 		LOG.info("\nCurrent Block:\n");
