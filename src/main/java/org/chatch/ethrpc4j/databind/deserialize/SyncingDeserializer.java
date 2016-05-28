@@ -1,6 +1,6 @@
-package org.chatch.ethrpc4j.mapping.deserialize;
+package org.chatch.ethrpc4j.databind.deserialize;
 
-import static org.chatch.ethrpc4j.mapping.Converters.*;
+import static org.chatch.ethrpc4j.databind.Converters.*;
 
 import java.io.IOException;
 

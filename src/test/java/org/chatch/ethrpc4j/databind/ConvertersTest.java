@@ -1,6 +1,6 @@
-package org.chatch.ethrpc4j.mapping;
+package org.chatch.ethrpc4j.databind;
 
-import static org.chatch.ethrpc4j.mapping.Converters.*;
+import static org.chatch.ethrpc4j.databind.Converters.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 

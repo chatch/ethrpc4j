@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-import org.chatch.ethrpc4j.mapping.EthRpc4jObjectMapper;
+import org.chatch.ethrpc4j.databind.EthRpc4jObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,19 +16,31 @@ public class HttpRpcProvider implements RpcProvider {
 	private static final Logger LOG = LoggerFactory.getLogger(HttpRpcProvider.class);
 
 	private static final String DEFAULT_PATH = "http://localhost:8545";
+	private static final URL DEFAULT_URL;
+	static {
+		try {
+			DEFAULT_URL = new URL(DEFAULT_PATH);
+		} catch (MalformedURLException e) {
+			throw new IllegalStateException("default URL malformed: " + DEFAULT_PATH);
+		}
+	}
 
 	private JsonRpcHttpClient client;
 
-	public HttpRpcProvider() throws MalformedURLException {
-		this(DEFAULT_PATH);
+	public HttpRpcProvider() {
+		this(DEFAULT_URL);
 	}
 
-	public HttpRpcProvider(String serverURL) throws MalformedURLException {
+	public HttpRpcProvider(URL serverURL) {
 		this(serverURL, new EthRpc4jObjectMapper());
 	}
 
-	public HttpRpcProvider(String serverURL, ObjectMapper mapper) throws MalformedURLException {
-		this.client = new JsonRpcHttpClient(mapper, new URL(serverURL), new HashMap<>());
+	public HttpRpcProvider(URL serverURL, ObjectMapper mapper) {
+		this.client = new JsonRpcHttpClient(mapper, serverURL, new HashMap<>());
+	}
+
+	public HttpRpcProvider(JsonRpcHttpClient client) {
+		this.client = client;
 	}
 
 	@Override

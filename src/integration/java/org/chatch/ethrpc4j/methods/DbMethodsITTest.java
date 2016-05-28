@@ -1,10 +1,10 @@
-package org.chatch.ethrpc4j;
+package org.chatch.ethrpc4j.methods;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import org.chatch.ethrpc4j.mapping.Converters;
-import org.chatch.ethrpc4j.methods.DbMethods;
+import org.chatch.ethrpc4j.EthereumClient;
+import org.chatch.ethrpc4j.databind.Converters;
 import org.chatch.ethrpc4j.rpc.HttpRpcProvider;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 import org.junit.BeforeClass;
@@ -13,15 +13,13 @@ import org.junit.Test;
 
 public class DbMethodsITTest {
 
-	final static String GETH_PATH = "http://localhost:8545";
-
 	final static String DB_NAME = "db";
 
 	static DbMethods db;
 
 	@BeforeClass
 	public static void setUpOnce() throws java.net.MalformedURLException {
-		RpcProvider provider = new HttpRpcProvider(GETH_PATH);
+		RpcProvider provider = new HttpRpcProvider();
 		EthereumClient client = new EthereumClient(provider);
 		db = client.db();
 	}

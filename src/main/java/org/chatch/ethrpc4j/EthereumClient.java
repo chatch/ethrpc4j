@@ -6,6 +6,7 @@ import org.chatch.ethrpc4j.methods.NetMethods;
 import org.chatch.ethrpc4j.methods.PersonalMethods;
 import org.chatch.ethrpc4j.methods.ShhMethods;
 import org.chatch.ethrpc4j.methods.Web3Methods;
+import org.chatch.ethrpc4j.rpc.HttpRpcProvider;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 
 /**
@@ -15,6 +16,8 @@ import org.chatch.ethrpc4j.rpc.RpcProvider;
  *      here</a>.
  */
 public class EthereumClient {
+
+	private static final EthereumClient defaultInstance = new EthereumClient(new HttpRpcProvider());
 
 	private EthMethods eth;
 
@@ -59,6 +62,10 @@ public class EthereumClient {
 
 	public NetMethods net() {
 		return net;
+	}
+
+	public static EthereumClient getDefaultInstance() {
+		return defaultInstance;
 	}
 
 }

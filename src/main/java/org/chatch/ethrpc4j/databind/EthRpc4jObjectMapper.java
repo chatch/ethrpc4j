@@ -1,4 +1,4 @@
-package org.chatch.ethrpc4j.mapping;
+package org.chatch.ethrpc4j.databind;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

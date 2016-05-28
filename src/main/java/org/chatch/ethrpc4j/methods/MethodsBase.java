@@ -1,6 +1,6 @@
 package org.chatch.ethrpc4j.methods;
 
-import org.chatch.ethrpc4j.mapping.Converters;
+import org.chatch.ethrpc4j.databind.Converters;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 
 public abstract class MethodsBase {

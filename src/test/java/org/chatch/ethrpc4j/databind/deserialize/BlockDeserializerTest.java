@@ -1,11 +1,11 @@
-package org.chatch.ethrpc4j.mapping.deserialize;
+package org.chatch.ethrpc4j.databind.deserialize;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 
-import org.chatch.ethrpc4j.mapping.EthRpc4jObjectMapper;
+import org.chatch.ethrpc4j.databind.EthRpc4jObjectMapper;
 import org.chatch.ethrpc4j.test.Utils;
 import org.chatch.ethrpc4j.types.Block;
 import org.junit.Test;

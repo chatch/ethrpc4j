@@ -1,11 +1,11 @@
-package org.chatch.ethrpc4j;
+package org.chatch.ethrpc4j.methods;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 import java.net.MalformedURLException;
 
-import org.chatch.ethrpc4j.methods.Web3Methods;
+import org.chatch.ethrpc4j.EthereumClient;
 import org.chatch.ethrpc4j.rpc.HttpRpcProvider;
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 import org.junit.BeforeClass;
@@ -13,13 +13,11 @@ import org.junit.Test;
 
 public class Web3MethodsITTest {
 
-	final static String GETH_PATH = "http://localhost:8545";
-
 	static Web3Methods web3;
 
 	@BeforeClass
 	public static void setUpOnce() throws MalformedURLException {
-		RpcProvider provider = new HttpRpcProvider(GETH_PATH);
+		RpcProvider provider = new HttpRpcProvider();
 		EthereumClient client = new EthereumClient(provider);
 		web3 = client.web3();
 	}

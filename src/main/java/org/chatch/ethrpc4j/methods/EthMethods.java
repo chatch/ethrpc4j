@@ -13,8 +13,8 @@ public class EthMethods extends MethodsBase {
 		super(METHOD_PREFIX, provider);
 	}
 
-	public String protocolVersion() throws Exception {
-		return callString("protocolVersion");
+	public Long protocolVersion() throws Exception {
+		return callQuantity("protocolVersion");
 	}
 
 	public Syncing syncing() throws Exception {
