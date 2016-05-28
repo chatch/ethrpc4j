@@ -2,8 +2,11 @@ package org.chatch.ethrpc4j.methods;
 
 import static org.chatch.ethrpc4j.databind.Converters.*;
 
+import java.util.List;
+
 import org.chatch.ethrpc4j.rpc.RpcProvider;
 import org.chatch.ethrpc4j.types.Block;
+import org.chatch.ethrpc4j.types.Log;
 import org.chatch.ethrpc4j.types.Syncing;
 import org.chatch.ethrpc4j.types.Transaction;
 
@@ -171,16 +174,19 @@ public class EthMethods extends MethodsBase {
 		return callBoolean("uninstallFilter", new Object[] { quantityToHex(filterId) });
 	}
 
-	public Object[] getFilterChanges(Long filterId) throws Exception {
-		return (Object[]) call("getFilterChanges", new Object[] { quantityToHex(filterId) }, Object[].class);
+	@SuppressWarnings("unchecked")
+	public List<Log> getFilterChanges(Long filterId) throws Exception {
+		return (List<Log>) call("getFilterChanges", new Object[] { quantityToHex(filterId) }, List.class);
 	}
 
-	public Object[] getFilterLogs(Long filterId) throws Exception {
-		return (Object[]) call("getFilterLogs", new Object[] { quantityToHex(filterId) }, Object[].class);
+	@SuppressWarnings("unchecked")
+	public List<Log> getFilterLogs(Long filterId) throws Exception {
+		return (List<Log>) call("getFilterLogs", new Object[] { quantityToHex(filterId) }, List.class);
 	}
 
-	public Object[] getLogs(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
-		return (Object[]) call("getLogs", new Object[] { fromBlock, toBlock, address, topics }, Object[].class);
+	@SuppressWarnings("unchecked")
+	public List<Log> getLogs(String fromBlock, String toBlock, String address, String[] topics) throws Exception {
+		return (List<Log>) call("getLogs", new Object[] { fromBlock, toBlock, address, topics }, List.class);
 	}
 
 	public String[] getWork() throws Exception {
