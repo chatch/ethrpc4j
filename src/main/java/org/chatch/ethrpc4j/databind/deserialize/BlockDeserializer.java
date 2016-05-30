@@ -51,19 +51,23 @@ public class BlockDeserializer extends StdDeserializer<Block> {
 		block.setMiner(string(node, "miner"));
 		block.setExtraData(string(node, "extraData"));
 
-		final List<Transaction> txList = new ArrayList<>();
-		for (JsonNode tx : node.get("transactions")) {
-			txList.add(mapper.treeToValue(tx, Transaction.class));
-		}
-		block.setTransactions(txList);
-
-		final JsonNode uncleNodes = node.get("uncles");
-		if (uncleNodes.isArray()) {
-			final List<String> unclesList = new ArrayList<>(uncleNodes.size());
-			for (JsonNode uncle : uncleNodes) {
-				unclesList.add(uncle.asText());
+		if (node.has("transactions")) {
+			final List<Transaction> txList = new ArrayList<>();
+			for (JsonNode tx : node.get("transactions")) {
+				txList.add(mapper.treeToValue(tx, Transaction.class));
 			}
-			block.setUncles(unclesList);
+			block.setTransactions(txList);
+		}
+
+		if (node.has("uncles")) {
+			final JsonNode uncleNodes = node.get("uncles");
+			if (uncleNodes.isArray()) {
+				final List<String> unclesList = new ArrayList<>(uncleNodes.size());
+				for (JsonNode uncle : uncleNodes) {
+					unclesList.add(uncle.asText());
+				}
+				block.setUncles(unclesList);
+			}
 		}
 
 		return block;

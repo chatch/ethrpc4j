@@ -17,6 +17,12 @@ import org.junit.Test;
 
 public class EthMethodsITTest {
 
+	static final String ACCOUNT_HASH = "0x0c2bcdc298f0d7678328c7a17647b12b853660a3";
+
+	static final String BLOCK_HASH = "0xffff6a5cb82a87066dc520cecdf25aa04c670bcc752756fe032407ebe004b9e5";
+
+	static final Long BLOCK_NUMBER = 51L;
+
 	static EthMethods eth;
 
 	@BeforeClass
@@ -49,23 +55,37 @@ public class EthMethodsITTest {
 
 	@Test
 	public void testAccounts() throws Throwable {
-		List<String> rsp = eth.accounts();
-		assertThat(rsp.size(), greaterThan(0));
+		List<String> accounts = eth.accounts();
+		assertThat(accounts.size(), equalTo(1));
+		assertThat(accounts.get(0), equalTo(ACCOUNT_HASH));
 	}
 
 	@Test
 	public void testGetBlock() throws Throwable {
-		final Long BLOCK_NUM = 935709L;
-		Block rsp = eth.getBlockByNumber(BLOCK_NUM.toString(), false);
-		assertThat(rsp.getNumber(), equalTo(935709L));
-		assertThat(rsp.getHash(), equalTo("0xc8537f462845d63684ebf16eba167b9ce7d48f1bd8392a8ec4d29b97d39bf62d"));
-		assertThat(rsp.getParentHash(), equalTo("0x3af12f4705297e10abc436afe703659186cdd1f550f33a36dcbc99c4a0799bd3"));
-		assertThat(rsp.getNonce(), equalTo("0x9c744c11b9c6c576"));
+		Block rsp = eth.getBlockByNumber(BLOCK_NUMBER.toString(), false);
+		assertThat(rsp.getNumber().longValue(), equalTo(BLOCK_NUMBER));
+		assertThat(rsp.getHash(), equalTo(BLOCK_HASH));
+		assertThat(rsp.getParentHash(), equalTo("0x5ef877a48c9bff81a38d98241414723f6372d4aeccee3bdbefa8fe9b2d2f5234"));
+		assertThat(rsp.getNonce(), equalTo("0x105532dafeda5583"));
+	}
+
+	@Test
+	public void testGetTransactionCount() throws Throwable {
+		assertThat(eth.getTransactionCount(ACCOUNT_HASH, "latest"), equalTo(0L));
+		assertThat(eth.getTransactionCount(ACCOUNT_HASH, BLOCK_NUMBER), equalTo(0L));
+	}
+
+	@Test
+	public void testGetBlockTransactionCount() throws Throwable {
+		assertThat(eth.getBlockTransactionCountByHash(
+				"0xffff6a5cb82a87066dc520cecdf25aa04c670bcc752756fe032407ebe004b9e5"), equalTo(0L));
+		assertThat(eth.getBlockTransactionCountByNumber(BLOCK_NUMBER), equalTo(0L));
+		assertThat(eth.getBlockTransactionCountByNumber("latest"), equalTo(0L));
 	}
 
 	@Test
 	public void testGetTransactionByHash() throws Throwable {
-		final String TX_HASH = "0x1a7e99b6f1a3e34b234f37fbc1b340f90cc7b5c50e70750870cdbcde14f218d0";
+		final String TX_HASH = "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421";
 		Transaction tx = eth.getTransactionByHash(TX_HASH);
 		System.out.println(tx);
 		assertThat(tx.getNonce(), equalTo(1049520L));
@@ -80,11 +100,12 @@ public class EthMethodsITTest {
 	@Test
 	public void testGetUncleByBlockHash() throws Throwable {
 		Block rsp = eth.getUncleByBlockHashAndIndex(
-				"0x44d0f987bf61c87d89c7b2952d0e911eaa5afb746a0c63c170849da7db28aa89", "0x0");
-		assertThat(rsp.getNumber(), equalTo(980241L));
-		assertThat(rsp.getHash(), equalTo("0x1aa6b13577fbcd83bf8e41533befd31f393debe49af9f0aa7ffe499a8834b3cf"));
-		assertThat(rsp.getParentHash(), equalTo("0xf97a0e7989b209b0875857de2d31227e2b728a017109cceecfc0b2606bb1fb6b"));
-		assertThat(rsp.getNonce(), equalTo("0x7c5bcddfa63a6d11"));
+				"0x4423edb1f634668eb6e74f25f26fbdc3ef637dd704dbf57b4cfe7d7880e6df48", "0x0");
+		assertThat(rsp, not(nullValue()));
+		assertThat(rsp.getNumber(), equalTo(2L));
+		assertThat(rsp.getHash(), equalTo("0x74b44b5131d03185da25c9e0979924c9aace62355aacd421a71e7404af44fad5"));
+		assertThat(rsp.getParentHash(), equalTo("0x2e346523e0a48955068564b4149a0925b4a1ff7da32dc2d41609fbf70199bc75"));
+		assertThat(rsp.getNonce(), equalTo("0x65196009dfdefa8e"));
 	}
 
 	@Test

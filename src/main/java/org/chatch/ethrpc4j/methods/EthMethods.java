@@ -51,36 +51,48 @@ public class EthMethods extends MethodsBase {
 		return callQuantity("blockNumber");
 	}
 
-	public Long getBalance(Long address, Long block) throws Exception {
-		return callQuantity("getBalance", new Object[] { address, block });
+	public Long getBalance(String address) throws Exception {
+		return callQuantity("getBalance", new Object[] { address });
 	}
 
-	public Long getBalance(Long address) throws Exception {
-		return callQuantity("getBalance", new Object[] { address });
+	public Long getBalance(String address, String blockHash) throws Exception {
+		return callQuantity("getBalance", new Object[] { address, blockHash });
 	}
 
 	public String getStorageAt(String address, String storageIdx, String blockId) throws Exception {
 		return callString("getStorageAt", new Object[] { address, storageIdx, blockId });
 	}
 
-	public Long getTransactionCount(Long address, Long blockId) throws Exception {
-		return callQuantity("getTransactionCount", new Object[] { address, blockId });
+	public Long getTransactionCount(String address, Long blockNumber) throws Exception {
+		return callQuantity("getTransactionCount", new Object[] { address, blockNumber });
 	}
 
-	public Long getBlockTransactionCountByHash(Long blockHash) throws Exception {
+	public Long getTransactionCount(String address, String tag) throws Exception {
+		return callQuantity("getTransactionCount", new Object[] { address, tag });
+	}
+
+	public Long getBlockTransactionCountByHash(String blockHash) throws Exception {
 		return callQuantity("getBlockTransactionCountByHash", new Object[] { blockHash });
 	}
 
-	public Long getBlockTransactionCountByNumber(Long bnOrId) throws Exception {
-		return callQuantity("getBlockTransactionCountByNumber", new Object[] { bnOrId });
+	public Long getBlockTransactionCountByNumber(Long blockNumber) throws Exception {
+		return callQuantity("getBlockTransactionCountByNumber", new Object[] { blockNumber });
 	}
 
-	public Long getUncleCountByBlockHash(Long blockHash) throws Exception {
+	public Long getBlockTransactionCountByNumber(String tag) throws Exception {
+		return callQuantity("getBlockTransactionCountByNumber", new Object[] { tag });
+	}
+
+	public Long getUncleCountByBlockHash(String blockHash) throws Exception {
 		return callQuantity("getUncleCountByBlockHash", new Object[] { blockHash });
 	}
 
-	public Long getUncleCountByBlockNumber(Long bnOrId) throws Exception {
-		return callQuantity("getUncleCountByBlockNumber", new Object[] { bnOrId });
+	public Long getUncleCountByBlockNumber(Long blockNumber) throws Exception {
+		return callQuantity("getUncleCountByBlockNumber", new Object[] { blockNumber });
+	}
+
+	public Long getUncleCountByBlockNumber(String tag) throws Exception {
+		return callQuantity("getUncleCountByBlockNumber", new Object[] { tag });
 	}
 
 	public String getCode(String addr, String bnOrId) throws Exception {

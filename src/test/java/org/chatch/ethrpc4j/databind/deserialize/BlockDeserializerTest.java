@@ -20,7 +20,7 @@ public class BlockDeserializerTest {
 	final static EthRpc4jObjectMapper mapper = new EthRpc4jObjectMapper();
 
 	@Test
-	public void test() throws JsonParseException, JsonMappingException, IOException {
+	public void testBlock() throws JsonParseException, JsonMappingException, IOException {
 		String json = Utils.jsonRspResult("block");
 		System.out.println(json);
 
@@ -72,6 +72,18 @@ public class BlockDeserializerTest {
 		assertThat(uncles, hasSize(2));
 		assertThat(uncles.get(0), equalTo("0x0000000000"));
 		assertThat(uncles.get(1), equalTo("0xffffffffff"));
+	}
+
+	@Test
+	public void testBlockNoTxNoUncles() throws JsonParseException, JsonMappingException, IOException {
+		String json = Utils.jsonRspResult("block_no_tx");
+		System.out.println(json);
+
+		final Block block = mapper.readValue(json, Block.class);
+		assertThat(block, not(nullValue()));
+
+		assertThat(block.getTransactions(), empty());
+		assertThat(block.getUncles(), empty());
 	}
 
 }
